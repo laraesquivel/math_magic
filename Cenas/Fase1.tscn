@@ -13,44 +13,48 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.75, 16.3125 )
 
-[node name="Fase1" type="Node2D"]
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Fase1" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
-[node name="Fundo" type="Sprite" parent="."]
-position = Vector2( 1664, 384 )
+[node name="Fundo" type="Sprite" parent="Fase1"]
+position = Vector2( 1648, 368 )
 scale = Vector2( 0.232256, 0.231232 )
 texture = ExtResource( 1 )
 offset = Vector2( -4903.25, 191.882 )
 
-[node name="Parede" type="Sprite" parent="."]
-position = Vector2( 800, 456 )
-scale = Vector2( 0.997778, 0.997778 )
+[node name="Parede" type="Sprite" parent="Fase1"]
+position = Vector2( 768, 429.75 )
+scale = Vector2( 0.96, 0.956111 )
 texture = ExtResource( 2 )
 
-[node name="Vermelho" type="Sprite" parent="."]
+[node name="Vermelho" type="Sprite" parent="Fase1"]
 position = Vector2( 733, 352 )
 scale = Vector2( 0.0135673, 0.0135673 )
 texture = ExtResource( 6 )
 
-[node name="Verde" type="Sprite" parent="."]
-position = Vector2( 733, 600 )
+[node name="Verde" type="Sprite" parent="Fase1"]
+position = Vector2( 741, 608 )
 scale = Vector2( 0.0135673, 0.0135673 )
 texture = ExtResource( 4 )
 
-[node name="Roxo" type="Sprite" parent="."]
+[node name="Roxo" type="Sprite" parent="Fase1"]
 position = Vector2( 293, 616 )
 scale = Vector2( 0.0135673, 0.0135673 )
 texture = ExtResource( 7 )
 
-[node name="AzulK" type="KinematicBody2D" parent="."]
+[node name="AzulK" type="KinematicBody2D" parent="Fase1"]
 script = ExtResource( 8 )
 
-[node name="Azul" type="Sprite" parent="AzulK"]
+[node name="Azul" type="Sprite" parent="Fase1/AzulK"]
 position = Vector2( 285, 352 )
 scale = Vector2( 0.0135673, 0.0135673 )
 texture = ExtResource( 5 )
 script = ExtResource( 3 )
 
-[node name="CollisionShape2DAzul" type="CollisionShape2D" parent="AzulK"]
+[node name="CollisionShape2DAzul" type="CollisionShape2D" parent="Fase1/AzulK"]
 position = Vector2( 289.25, 357.313 )
 shape = SubResource( 1 )

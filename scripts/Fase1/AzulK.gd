@@ -4,12 +4,13 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
-
 # Called when the node enters the scene tree for the first time.
+var daddy = null
+
 func _ready():
-	pass # Replace with function body.
-
-
+	print("KinematicBody lendo estado")
+	var daddy = get_parent()
+	print(daddy.get_player_turn())
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -18,6 +19,7 @@ export (int) var speed = 400
 var velocity = Vector2()
 
 func get_input():
+	
 	velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1

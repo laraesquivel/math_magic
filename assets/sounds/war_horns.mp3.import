@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/war_horns.mp3-c57c2da322187f2de783689b9e7a802e.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/war_horns.mp3"
+dest_files=[ "res://.import/war_horns.mp3-c57c2da322187f2de783689b9e7a802e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

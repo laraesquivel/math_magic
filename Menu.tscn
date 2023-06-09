@@ -19,24 +19,25 @@ anchor_bottom = 1.0
 script = ExtResource( 12 )
 
 [node name="Fundo" type="Sprite" parent="."]
-position = Vector2( 799, 449 )
+position = Vector2( 639.889, 359.5 )
+scale = Vector2( 0.801111, 0.801111 )
 texture = ExtResource( 1 )
 
 [node name="Gliter" type="Sprite" parent="."]
-position = Vector2( 487.969, 414.422 )
-scale = Vector2( 0.25975, 0.258665 )
+position = Vector2( 366, 372 )
+scale = Vector2( 0.219195, 0.218279 )
 texture = ExtResource( 8 )
 
 [node name="ErickMath" type="Sprite" parent="."]
-position = Vector2( 487.969, 395.422 )
-scale = Vector2( 0.239114, 0.238116 )
+position = Vector2( 356, 360 )
+scale = Vector2( 0.182866, 0.182103 )
 texture = ExtResource( 6 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 1008.0
-margin_top = 168.0
-margin_right = 1509.0
-margin_bottom = 706.0
+margin_left = 734.0
+margin_top = 92.0
+margin_right = 1235.0
+margin_bottom = 630.0
 alignment = 1
 
 [node name="NovoJogo" type="Button" parent="VBoxContainer"]

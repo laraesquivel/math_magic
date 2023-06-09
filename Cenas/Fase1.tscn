@@ -10,8 +10,8 @@
 [ext_resource path="res://scripts/Fase1/AzulK.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Fase1/Fase1.gd" type="Script" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 21.75, 16.3125 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.0
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -20,16 +20,10 @@ anchor_bottom = 1.0
 [node name="Fase1" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
-[node name="Fundo" type="Sprite" parent="Fase1"]
-position = Vector2( 1648, 368 )
-scale = Vector2( 0.232256, 0.231232 )
+[node name="fundo" type="Sprite" parent="Fase1"]
+position = Vector2( 423, 364 )
+scale = Vector2( 0.203, 0.203 )
 texture = ExtResource( 1 )
-offset = Vector2( -4903.25, 191.882 )
-
-[node name="Parede" type="Sprite" parent="Fase1"]
-position = Vector2( 768, 429.75 )
-scale = Vector2( 0.96, 0.956111 )
-texture = ExtResource( 2 )
 
 [node name="Vermelho" type="Sprite" parent="Fase1"]
 position = Vector2( 733, 352 )
@@ -46,15 +40,21 @@ position = Vector2( 293, 616 )
 scale = Vector2( 0.0135673, 0.0135673 )
 texture = ExtResource( 7 )
 
+[node name="Parede" type="Sprite" parent="Fase1"]
+position = Vector2( 640, 360 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
+
 [node name="AzulK" type="KinematicBody2D" parent="Fase1"]
+position = Vector2( 200, 200 )
 script = ExtResource( 8 )
 
 [node name="Azul" type="Sprite" parent="Fase1/AzulK"]
-position = Vector2( 285, 352 )
-scale = Vector2( 0.0135673, 0.0135673 )
+scale = Vector2( 0.012, 0.012 )
 texture = ExtResource( 5 )
+offset = Vector2( 0, -800 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2DAzul" type="CollisionShape2D" parent="Fase1/AzulK"]
-position = Vector2( 289.25, 357.313 )
+position = Vector2( 0, -2 )
 shape = SubResource( 1 )

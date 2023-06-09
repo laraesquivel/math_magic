@@ -26,7 +26,7 @@ func get_input():
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("ui_down"):
-		velocity.y += 400
+		velocity.y += 1
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 	velocity = velocity.normalized() * speed

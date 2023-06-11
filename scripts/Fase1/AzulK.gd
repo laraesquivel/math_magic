@@ -30,7 +30,10 @@ func get_input():
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 	velocity = velocity.normalized() * speed
-
+	if (velocity != Vector2(0,0)):
+		velocity.x *= -1
+		rotation_degrees = rad2deg(velocity.angle_to(Vector2(0,1)))
+		velocity.x *= -1
 func _physics_process(delta):
 	
 	get_input()

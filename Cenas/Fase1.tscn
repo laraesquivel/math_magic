@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/NewcombatMap/BlueToken.png" type="Texture" id=1]
 [ext_resource path="res://assets/NewcombatMap/combatArea.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Fase1/Azul.gd" type="Script" id=3]
 [ext_resource path="res://assets/NewcombatMap/CombatInterface.png" type="Texture" id=4]
+[ext_resource path="res://TextFont.tres" type="Theme" id=5]
 [ext_resource path="res://scripts/Fase1/AzulK.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Fase1/Fase1.gd" type="Script" id=9]
 
@@ -38,3 +39,21 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Fase1"]
 position = Vector2( 640, 360 )
 texture = ExtResource( 4 )
+
+[node name="LineEdit" type="LineEdit" parent="Fase1"]
+margin_left = 1055.0
+margin_top = 596.0
+margin_right = 1216.0
+margin_bottom = 637.0
+theme = ExtResource( 5 )
+text = "X2 kda + 1"
+
+[node name="Label" type="Label" parent="Fase1"]
+margin_left = 1003.0
+margin_top = 602.0
+margin_right = 1070.0
+margin_bottom = 638.0
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "F(x) = "
+percent_visible = -0.2

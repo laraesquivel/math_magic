@@ -14,7 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-export (int) var speed = 400
+export (int) var speed = 100
 
 var velocity = Vector2()
 

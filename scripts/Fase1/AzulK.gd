@@ -19,6 +19,7 @@ var shotDirection = Vector2.ZERO
 
 func get_input():
 	
+	
 	velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
@@ -30,12 +31,15 @@ func get_input():
 		velocity.y -= 1
 	velocity = velocity.normalized()
 	
+	# Verifica se mudou a direção do personagem
 	if (velocity != Vector2(0,0)):
 		shotDirection = velocity
 		velocity.x *= -1
+		#Rotaciona o Personagem
 		rotation_degrees = rad2deg(velocity.angle_to(Vector2(0,1)))
 		velocity.x *= -1	
 	
+	#Verifica se foi solicitado o tiro
 	if Input.is_action_just_pressed("shot"):
 		var shotInstance = SHOT.instance()
 		get_parent().add_child(shotInstance)

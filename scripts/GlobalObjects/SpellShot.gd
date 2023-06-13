@@ -1,16 +1,20 @@
 extends Area2D
 
+const SPEED := 400
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var velocity := Vector2.ZERO
+var direction := Vector2(1,0)
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func set_diraction(dir : Vector2):
+	direction = dir
+	direction.x *= -1
+	rotation_degrees = rad2deg(direction.angle_to(Vector2(1,0)))
+	direction.x *= -1
+		
+func _physics_process(delta : float) -> void:
+	velocity.x = SPEED * delta * direction.x
+	velocity.y = SPEED * delta * direction.y
+	translate(velocity)

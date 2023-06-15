@@ -3,10 +3,6 @@
 [ext_resource path="res://assets/NewcombatMap/MagicShotSprite.png" type="Texture" id=1]
 [ext_resource path="res://scripts/GlobalObjects/SpellShot.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 7.8498
-height = 6.0
-
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
@@ -35,15 +31,30 @@ animations = [ {
 "speed": 12.0
 } ]
 
+[sub_resource type="CircleShape2D" id=7]
+
 [node name="SpellShot" type="Area2D"]
 rotation = 3.14159
 scale = Vector2( 0.8, 0.8 )
+collision_layer = 4
+collision_mask = 3
 script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ -8.0 ]
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-frame = 3
+frame = 2
 playing = true
+offset = Vector2( 5, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_SpellShot_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

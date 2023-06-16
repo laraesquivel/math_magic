@@ -1,10 +1,10 @@
 extends Node
 
 var magicShot = Vector2.ZERO
-signal hitted
+signal wallHitted
 
 func emit_hit():
-	emit_signal("hitted")
+	emit_signal("wallHitted")
 
 func _ready():
 	pass

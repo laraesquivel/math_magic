@@ -5,7 +5,7 @@ var cellColised
 
 func _ready():
 	var destructibleTile
-	destructibleTile = Global.connect("hitted", self, "destroy")
+	destructibleTile = Global.connect("wallHitted", self, "destroy")
 	
 func destroy():
 	var cellSelect

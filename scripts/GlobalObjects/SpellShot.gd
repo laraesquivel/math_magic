@@ -24,7 +24,7 @@ func _on_SpellShot_body_entered(body : Node):
 	if(body.is_in_group("walls")):
 		Global.magicShot = global_position
 		Global.emit_hit()
-		queue_free()
+		get_parent().get_parent().queue_free()
 
 #func _on_VisibilityNotifier2D_screen_exited():
 #	queue_free()

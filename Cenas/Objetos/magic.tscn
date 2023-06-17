@@ -53,8 +53,8 @@ script = ExtResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2( 38, 43 )
-rotation = 0.0841379
-lookahead = 10.0
+rotation = 0.121432
+lookahead = 100.0
 
 [node name="SpellShot" parent="PathFollow2D" instance=ExtResource( 1 )]
 

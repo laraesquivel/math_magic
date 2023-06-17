@@ -10,9 +10,9 @@ func _ready():
 	for x in range(0,1000):
 		label = Label.new()
 		label.set_text(".")
-		label.set_position(Vector2(x,(10*sin(0.5*x)+100)))
-		add_child(label)
-		newCurve.add_point(Vector2(x,(10*sin(0.5*x)+100)))
+		label.set_position(Vector2(x,(50*sin(0.5*x))))
+		#add_child(label)
+		newCurve.add_point(Vector2(x,(50*sin(0.5*x))))
 	curve = newCurve
 	
 	var animation = $PathFollow2D/AnimationPlayer.get_animation("shot")

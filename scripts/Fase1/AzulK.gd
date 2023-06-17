@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const SHOT := preload("res://Cenas/Objetos/SpellShot.tscn")
+const SHOT := preload("res://Cenas/Objetos/magic.tscn")
 
 # Called when the node enters the scene tree for the first time.
 var daddy = null
@@ -45,7 +45,7 @@ func get_input():
 		get_parent().add_child(shotInstance)
 		shotInstance.z_index = -1
 		shotInstance.position = $spellPoint.global_position
-		shotInstance.set_diraction(shotDirection)
+		#shotInstance.set_diraction(shotDirection)
 	
 	velocity *= speed
 	

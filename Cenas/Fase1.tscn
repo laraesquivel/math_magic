@@ -130,7 +130,7 @@ anchor_bottom = 1.0
 [node name="Fase1" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
-[node name="CombatMap" type="StaticBody2D" parent="Fase1"]
+[node name="CombatMap" type="StaticBody2D" parent="Fase1" groups=["walls"]]
 z_index = -1
 
 [node name="CombatMapSprite" type="Sprite" parent="Fase1/CombatMap"]

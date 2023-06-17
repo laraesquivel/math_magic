@@ -129,7 +129,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_horizontal_guides_": [ 32.0, 640.0, 360.0 ],
-"_edit_vertical_guides_": [ 40.0, 792.0, 416.0 ]
+"_edit_vertical_guides_": [ 40.0, 792.0, 420.0 ]
 }
 
 [node name="Fase1" type="Node2D" parent="."]
@@ -147,7 +147,8 @@ build_mode = 1
 polygon = PoolVector2Array( 484, 34, 589, 57, 681, 108, 768, 184, 812, 277, 812.494, 299.723, 797, 299, 799, 419, 812.033, 419.482, 811, 446, 748, 557, 639, 644, 494, 691, 468, 689, 466, 655, 368, 654, 367.976, 691.788, 334, 692, 198, 640, 94, 570, 28, 472, 17.6943, 420.472, 37, 422, 38, 299, 14, 299, 62, 192, 126, 122, 220, 64, 310, 38, 429, 27, 429, 0, 2, 6, 5, 717, 841, 717, 843, 0, 432, 0, 429, 27 )
 
 [node name="Walls" type="TileMap" parent="Fase1" groups=["walls"]]
-position = Vector2( -2, 11 )
+visible = false
+position = Vector2( -4, 10 )
 z_index = -1
 tile_set = SubResource( 3 )
 cell_size = Vector2( 35, 35 )

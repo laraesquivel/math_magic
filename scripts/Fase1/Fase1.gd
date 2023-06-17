@@ -96,17 +96,22 @@ func _on_LineEdit_text_entered(new_text):
 	var query_string = generete_query_string(texto)
 	
 func generate_sequence_turn():
-	var list = Array()
-	if (Global.players[0]):
-		list.append(PLAYER_STATE.BLUE)
-	if (Global.players[1]):
-		list.append(PLAYER_STATE.GREEN)
-	if (Global.players[2]):
-		list.append(PLAYER_STATE.PURPLE)
-	if (Global.players[3]):
-		list.append(PLAYER_STATE.RED)
-	print(list)
+	randomize()
+	var listPlayers = Array()
+	var turn = Array()
 	
+	if (Global.players[0]):
+		listPlayers.append(PLAYER_STATE.BLUE)
+	if (Global.players[1]):
+		listPlayers.append(PLAYER_STATE.GREEN)
+	if (Global.players[2]):
+		listPlayers.append(PLAYER_STATE.PURPLE)
+	if (Global.players[3]):
+		listPlayers.append(PLAYER_STATE.RED)
+	print(listPlayers)
+	for i in range(listPlayers.size()):
+		turn.append(listPlayers.pop_at(randi() % listPlayers.size()))
+	print(turn)
 	pass
 
 

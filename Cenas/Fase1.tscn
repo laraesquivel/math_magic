@@ -187,3 +187,8 @@ margin_bottom = 638.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "F(x) = "
+
+[node name="HTTPRequest" type="HTTPRequest" parent="Fase1"]
+body_size_limit = 200
+
+[connection signal="request_completed" from="Fase1/HTTPRequest" to="Fase1" method="_on_HTTPRequest_request_completed"]

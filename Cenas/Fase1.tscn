@@ -166,7 +166,6 @@ position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
 [node name="spellPoint" type="Position2D" parent="Fase1/AzulK"]
-position = Vector2( 0, 18 )
 
 [node name="Sprite" type="Sprite" parent="Fase1"]
 position = Vector2( 640, 360 )

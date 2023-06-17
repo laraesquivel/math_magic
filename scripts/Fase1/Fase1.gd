@@ -1,10 +1,6 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+#Turnos
 enum PLAYER_STATE {
 	Wait,
 	Azul,
@@ -15,22 +11,21 @@ enum PLAYER_STATE {
 
 var player_turn = PLAYER_STATE.Wait
 
-var data = {
-	"coords":"(3,3)",
-	"expression":"2x",
-	"dominio_min":-3,
-	"dominio_max":3
-}
-
-
+#LineEdit para conexão de rede
+var line_edit
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
+	
 	$HTTPRequest.connect("request_completed", self, "_on_HTTPRequest_request_completed")
+	line_edit = get_node("LineEdit")
+	line_edit.connect("text_entired",self,"_on_LineEdit_text_entered")
+	
+	
 	
 	var headers = PoolStringArray()
 	headers.append("Content-Type: application/json")
-	var body_str = to_json(data)
+	
 	var caminho_absoluto = ProjectSettings.globalize_path("res://")
 	print(caminho_absoluto.replace("math_magic/",""))
 	caminho_absoluto += "pontos.csv/"
@@ -45,6 +40,11 @@ func _ready():
 func _input(event):
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and event.pressed:
 		get_tree().quit()
+	if event is InputEventKey:
+		var line_edit = $LineEdit  # Substitua "$LineEdit" pelo caminho correto para o nó LineEdit em sua cena
+		if event.pressed and event.scancode == KEY_ENTER:
+			line_edit.emit_signal("text_entered")
+			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -77,7 +77,9 @@ func on_timer_out():
 	#Temporizador expirou
 	print("temporizador expirou")
 
-
+func generete_query_string(math_expression):
+	return "http://127.0.0.1:5000/getPoints2/x**2+4+sin(x)/3/-3"
+	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		if response_code == 200:
 			var response = body.get_string_from_utf8()
@@ -88,3 +90,10 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 			print("An error occurred in the HTTP request.")
 			
 	
+func _on_LineEdit_text_entered(new_text):
+	var texto = (get_node("LineEdit")).get_text()
+	var query_string = generete_query_string(texto)
+	
+
+
+

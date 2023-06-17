@@ -36,7 +36,7 @@ func _ready():
 	caminho_absoluto += "pontos.csv/"
 	print(caminho_absoluto)
 	
-	$HTTPRequest.request("http://127.0.0.1:5000/getPoints2/x/3/-3", headers, true, 0)
+	$HTTPRequest.request("http://127.0.0.1:5000/getPoints2/x**2+4+sin(x)/3/-3", headers, true, 0)
 
 	set_player_turn()
 

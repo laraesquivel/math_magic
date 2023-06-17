@@ -32,6 +32,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=7]
+radius = 8.75
 
 [node name="SpellShot" type="Area2D"]
 rotation = 3.14159
@@ -45,7 +46,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-frame = 3
+frame = 2
 playing = true
 offset = Vector2( 5, 0 )
 

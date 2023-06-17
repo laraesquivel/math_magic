@@ -21,6 +21,7 @@ func set_diraction(dir : Vector2):
 #	translate(velocity)
 
 func _on_SpellShot_body_entered(body : Node):
+	print(body)
 	if(body.is_in_group("walls")):
 		Global.magicShot = global_position
 		Global.emit_hit()

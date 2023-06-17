@@ -2,14 +2,14 @@ extends Node2D
 
 #Turnos
 enum PLAYER_STATE {
-	Wait,
-	Azul,
-	Vermelho,
-	Verde,
-	Roxo
+	WAIT,
+	BLUE,
+	GREEN,
+	PURPLE,
+	RED
 }
 
-var player_turn = PLAYER_STATE.Wait
+var player_turn = PLAYER_STATE.WAIT
 
 #LineEdit para conexão de rede
 var line_edit
@@ -32,7 +32,8 @@ func _ready():
 	print(caminho_absoluto)
 	
 	$HTTPRequest.request("http://127.0.0.1:5000/getPoints2/x**2+4+sin(x)/3/-3", headers, true, 0)
-
+	
+	generate_sequence_turn()
 	set_player_turn()
 
 
@@ -51,24 +52,24 @@ func _input(event):
 #	pass
 
 func set_player_turn():
-	if player_turn == PLAYER_STATE.Wait:
+	if player_turn == PLAYER_STATE.WAIT:
 		print("Trocando estado Wait-> Azul")
-		player_turn = PLAYER_STATE.Azul	
+		player_turn = PLAYER_STATE.BLUE	
 		
-	elif player_turn == PLAYER_STATE.Azul:
+	elif player_turn == PLAYER_STATE.BLUE:
 		print("Trocando estado Azul - > Vermelho")
-		player_turn = PLAYER_STATE.Vermelho
+		player_turn = PLAYER_STATE.RED
 		
-	elif player_turn == PLAYER_STATE.Vermelho:
+	elif player_turn == PLAYER_STATE.RED:
 		print("Trocando estado Vermelho ->Verde")
-		player_turn = PLAYER_STATE.Verde
+		player_turn = PLAYER_STATE.GREEN
 	
-	elif player_turn == PLAYER_STATE.Verde:
+	elif player_turn == PLAYER_STATE.GREEN:
 		print("Trocando estado Verde -> Roxo")
-		player_turn = PLAYER_STATE.Roxo
+		player_turn = PLAYER_STATE.PURPLE
 	else:
 		print("Trocando estado Roxo ->Azul")
-		player_turn = PLAYER_STATE.Azul
+		player_turn = PLAYER_STATE.BLUE
 	
 func get_player_turn():
 	return player_turn
@@ -94,6 +95,18 @@ func _on_LineEdit_text_entered(new_text):
 	var texto = (get_node("LineEdit")).get_text()
 	var query_string = generete_query_string(texto)
 	
-
+func generate_sequence_turn():
+	var list = Array()
+	if (Global.players[0]):
+		list.append(PLAYER_STATE.BLUE)
+	if (Global.players[1]):
+		list.append(PLAYER_STATE.GREEN)
+	if (Global.players[2]):
+		list.append(PLAYER_STATE.PURPLE)
+	if (Global.players[3]):
+		list.append(PLAYER_STATE.RED)
+	print(list)
+	
+	pass
 
 

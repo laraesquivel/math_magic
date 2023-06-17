@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 38, 43, 0, 0, 0, 0, 121, 50, 0, 0, 0, 0, 165, 64, 0, 0, 0, 0, 194, 91, 0, 0, 0, 0, 212, 113, 0, 0, 0, 0, 234, 137, 0, 0, 0, 0, 288, 137, 0, 0, 0, 0, 317, 108, 0, 0, 0, 0, 352, 75, 0, 0, 0, 0, 377, 50, 0, 0, 0, 0, 408, 57, 0, 0, 0, 0, 430, 72, 0, 0, 0, 0, 449, 95, 0, 0, 0, 0, 455, 102, 0, 0, 0, 0, 472, 97, 0, 0, 0, 0, 495, 87, 0, 0, 0, 0, 508, 69, 0, 0, 0, 0, 521, 56, 0, 0, 0, 0, 555, 48, 0, 0, 0, 0, 580, 74, 0, 0, 0, 0, 591, 148, 0, 0, 0, 0, 554, 187, 0, 0, 0, 0, 424, 211, 0, 0, 0, 0, 205, 188, 0, 0, 0, 0, 126, 137, 0, 0, 0, 0, 62, 69 )
+"points": PoolVector2Array(  )
 }
 
 [sub_resource type="Animation" id=2]
@@ -52,16 +52,12 @@ curve = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 38, 43 )
-rotation = 0.121432
 lookahead = 100.0
 
 [node name="SpellShot" parent="PathFollow2D" instance=ExtResource( 1 )]
+scale = Vector2( 1, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow2D"]
 autoplay = "shot"
 anims/RESET = SubResource( 2 )
 anims/shot = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.5, 0 )

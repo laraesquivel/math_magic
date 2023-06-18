@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/NewcombatMap/RedMage.png" type="Texture" id=1]
+[ext_resource path="res://assets/NewcombatMap/RedLux.png" type="Texture" id=2]
+[ext_resource path="res://Cenas/mageIcons/redWizardLux.gd" type="Script" id=3]
+
+[node name="redWizard" type="Node2D"]
+
+[node name="redWizardLux" type="Sprite" parent="."]
+visible = false
+position = Vector2( 36, 28 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="redWizardIcon" type="Sprite" parent="."]
+position = Vector2( 36, 28 )
+texture = ExtResource( 1 )

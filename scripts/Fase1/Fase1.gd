@@ -72,12 +72,10 @@ func set_player_turn():
 #		print("Trocando estado Roxo ->Azul")
 #		player_turn = PLAYER_STATE.BLUE
 	print("Mudando vez")
+	var current_player = turnSequence.find(player_turn)
 	if player_turn == PLAYER_STATE.WAIT:
 		player_turn = turnSequence[0]
-		
-	var current_player = turnSequence.find(player_turn)
-	
-	if (current_player < turnSequence.size()-1):
+	elif (current_player < turnSequence.size()-1):
 		player_turn = turnSequence[current_player+1]
 	else:
 		player_turn = turnSequence[0]
@@ -127,5 +125,24 @@ func generate_sequence_turn():
 	for i in range(listPlayers.size()):
 		turn.append(listPlayers.pop_at(randi() % listPlayers.size()))
 	turnSequence = turn
+	#print("a sequencia é: ",turn)
+	draw_sequence()
 
-
+func draw_sequence():
+	var icons = [$blueWizard,$greenWizard,$purpleWizard,$redWizard]
+	if (turnSequence.size() == 4):
+		icons[turnSequence[0]-1].position = Vector2(918,64)
+		icons[turnSequence[1]-1].position = Vector2(997,64)
+		icons[turnSequence[2]-1].position = Vector2(1076,64)
+		icons[turnSequence[3]-1].position = Vector2(1155,64)
+		#print(4)
+	elif (turnSequence.size() == 3):
+		icons[turnSequence[0]-1].position = Vector2(937.75,64)
+		icons[turnSequence[1]-1].position = Vector2(1036.5,64)
+		icons[turnSequence[2]-1].position = Vector2(1135.25,64)
+	elif (turnSequence.size() == 2):
+		icons[turnSequence[0]-1].position = Vector2(971,64)
+		icons[turnSequence[1]-1].position = Vector2(1102,64)
+		print(2)
+	else:
+		print("erro")

@@ -9,6 +9,7 @@ enum PLAYER_STATE {
 	RED
 }
 
+var turnSequence = Array()
 var player_turn = PLAYER_STATE.WAIT
 
 #LineEdit para conexão de rede
@@ -52,24 +53,36 @@ func _input(event):
 #	pass
 
 func set_player_turn():
+#	if player_turn == PLAYER_STATE.WAIT:
+#		print("Trocando estado Wait-> Azul")
+#		player_turn = PLAYER_STATE.BLUE	
+#		
+#	elif player_turn == PLAYER_STATE.BLUE:
+#		print("Trocando estado Azul - > Vermelho")
+#		player_turn = PLAYER_STATE.RED
+#		
+#	elif player_turn == PLAYER_STATE.RED:
+#		print("Trocando estado Vermelho ->Verde")
+#		player_turn = PLAYER_STATE.GREEN
+#	
+#	elif player_turn == PLAYER_STATE.GREEN:
+#		print("Trocando estado Verde -> Roxo")
+#		player_turn = PLAYER_STATE.PURPLE
+#	else:
+#		print("Trocando estado Roxo ->Azul")
+#		player_turn = PLAYER_STATE.BLUE
+	print("Mudando vez")
 	if player_turn == PLAYER_STATE.WAIT:
-		print("Trocando estado Wait-> Azul")
-		player_turn = PLAYER_STATE.BLUE	
+		player_turn = turnSequence[0]
 		
-	elif player_turn == PLAYER_STATE.BLUE:
-		print("Trocando estado Azul - > Vermelho")
-		player_turn = PLAYER_STATE.RED
-		
-	elif player_turn == PLAYER_STATE.RED:
-		print("Trocando estado Vermelho ->Verde")
-		player_turn = PLAYER_STATE.GREEN
+	var current_player = turnSequence.find(player_turn)
 	
-	elif player_turn == PLAYER_STATE.GREEN:
-		print("Trocando estado Verde -> Roxo")
-		player_turn = PLAYER_STATE.PURPLE
+	if (current_player < turnSequence.size()-1):
+		player_turn = turnSequence[current_player+1]
 	else:
-		print("Trocando estado Roxo ->Azul")
-		player_turn = PLAYER_STATE.BLUE
+		player_turn = turnSequence[0]
+	print("vez do: ", player_turn)
+	Global.emit_turnOver()
 	
 func get_player_turn():
 	return player_turn
@@ -95,6 +108,8 @@ func _on_LineEdit_text_entered(new_text):
 	var texto = (get_node("LineEdit")).get_text()
 	var query_string = generete_query_string(texto)
 	
+#  Verifica quantos e quais magos iram jogar e att o turnSequence com uma ordem
+# aleatoria de magos para essa partida
 func generate_sequence_turn():
 	randomize()
 	var listPlayers = Array()
@@ -108,10 +123,9 @@ func generate_sequence_turn():
 		listPlayers.append(PLAYER_STATE.PURPLE)
 	if (Global.players[3]):
 		listPlayers.append(PLAYER_STATE.RED)
-	print(listPlayers)
+		
 	for i in range(listPlayers.size()):
 		turn.append(listPlayers.pop_at(randi() % listPlayers.size()))
-	print(turn)
-	pass
+	turnSequence = turn
 
 

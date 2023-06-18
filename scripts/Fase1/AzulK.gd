@@ -41,6 +41,7 @@ func get_input():
 	
 	#Verifica se foi solicitado o tiro
 	if Input.is_action_just_pressed("shot"):
+		get_parent().set_player_turn()
 		var shotInstance = SHOT.instance()
 		get_parent().add_child(shotInstance)
 		shotInstance.z_index = -1

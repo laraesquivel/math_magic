@@ -89,8 +89,16 @@ func on_timer_out():
 	#Temporizador expirou
 	print("temporizador expirou")
 
-func generete_query_string(math_expression):
-	return "http://127.0.0.1:5000/getPoints2/x**2+4+sin(x)/3/-3"
+func generete_query_string(math_expression,valor):
+	var BASE_STR = "http://127.0.0.1:5000/getPoints2/"
+	BASE_STR += math_expression + "/"
+	print(BASE_STR)
+	if valor == 1:
+		BASE_STR += "100/0"
+	elif valor==-1:
+		BASE_STR +="0/-100"
+	print(BASE_STR)
+	return BASE_STR
 	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		if response_code == 200:
@@ -100,12 +108,16 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 			
 		else:
 			print("An error occurred in the HTTP request.")
-			
-	
+
+
 func _on_LineEdit_text_entered(new_text):
 	var texto = (get_node("LineEdit")).get_text()
-	var query_string = generete_query_string(texto)
-	
+	var query_string = generete_query_string(texto,1)
+	var headers = PoolStringArray()
+	headers.append("Content-Type: application/json")
+	$HTTPRequest.request(query_string, headers, true, 0)
+
+
 #  Verifica quantos e quais magos iram jogar e att o turnSequence com uma ordem
 # aleatoria de magos para essa partida
 func generate_sequence_turn():
@@ -127,6 +139,7 @@ func generate_sequence_turn():
 	turnSequence = turn
 	#print("a sequencia é: ",turn)
 	draw_sequence()
+
 
 func draw_sequence():
 	var icons = [$blueWizard,$greenWizard,$purpleWizard,$redWizard]

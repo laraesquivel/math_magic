@@ -16,19 +16,21 @@ export (int) var speed = 100
 
 var velocity = Vector2()
 var shotDirection = Vector2.ZERO
+var oldPosition = position
+var newPosition = position
 
 func get_input():
-	
-	
 	velocity = Vector2()
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
+	if ($"../runBarPorc".porcent > 0):
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+
 	velocity = velocity.normalized()
 	
 	# Verifica se mudou a direção do personagem
@@ -47,10 +49,12 @@ func get_input():
 		shotInstance.z_index = -1
 		shotInstance.position = $spellPoint.global_position
 		#shotInstance.set_diraction(shotDirection)
-	
+		
 	velocity *= speed
 	
 func _physics_process(delta):
-	
 	get_input()
 	velocity = move_and_slide(velocity)
+	newPosition = position
+	$"../runBarPorc".reducePorcent(oldPosition.distance_to(newPosition)/100)
+	oldPosition = newPosition

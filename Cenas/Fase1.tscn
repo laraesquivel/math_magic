@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/NewcombatMap/BlueToken.png" type="Texture" id=1]
 [ext_resource path="res://assets/NewcombatMap/combatArea.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Cenas/mageIcons/redWizard.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/NewcombatMap/RunBar.png" type="Texture" id=19]
 [ext_resource path="res://assets/NewcombatMap/runBarPorc.png" type="Texture" id=20]
+[ext_resource path="res://Cenas/runBarPorc.gd" type="Script" id=21]
 
 [sub_resource type="ConcavePolygonShape2D" id=8]
 segments = PoolVector2Array( 0, 0, 35, 0, 35, 0, 35, 35, 35, 35, 0, 35, 0, 35, 0, 0 )
@@ -233,6 +234,7 @@ texture = ExtResource( 19 )
 [node name="runBarPorc" type="Sprite" parent="Fase1"]
 position = Vector2( 1072, 580.5 )
 texture = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [connection signal="text_entered" from="Fase1/LineEdit" to="Fase1" method="_on_LineEdit_text_entered"]
 [connection signal="request_completed" from="Fase1/HTTPRequest" to="Fase1" method="_on_HTTPRequest_request_completed"]

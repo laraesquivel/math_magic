@@ -20,10 +20,16 @@ func set_diraction(dir : Vector2):
 #	velocity.y = SPEED * delta * direction.y
 #	translate(velocity)
 
-func _on_SpellShot_body_entered(body : Node):
-	if(body.is_in_group("walls")):
+func _on_SpellShot_body_entered(body : Node):	
+	if (body.is_in_group("wizard")):
+		if (body.get_parent().player_turn != body.this_wizard):
+			body.kill()
+			get_parent().get_parent().get_parent().set_player_turn()
+			get_parent().get_parent().queue_free()
+	if (body.is_in_group("walls")):
 		Global.magicShot = global_position
 		Global.emit_hit()
+		get_parent().get_parent().get_parent().set_player_turn()
 		get_parent().get_parent().queue_free()
 
 #func _on_VisibilityNotifier2D_screen_exited():

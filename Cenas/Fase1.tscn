@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/NewcombatMap/BlueToken.png" type="Texture" id=1]
 [ext_resource path="res://assets/NewcombatMap/combatArea.png" type="Texture" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://assets/NewcombatMap/RunBar.png" type="Texture" id=19]
 [ext_resource path="res://assets/NewcombatMap/runBarPorc.png" type="Texture" id=20]
 [ext_resource path="res://Cenas/runBarPorc.gd" type="Script" id=21]
+[ext_resource path="res://assets/NewcombatMap/RedToken.png" type="Texture" id=22]
+[ext_resource path="res://Cenas/redK.gd" type="Script" id=23]
 
 [sub_resource type="ConcavePolygonShape2D" id=8]
 segments = PoolVector2Array( 0, 0, 35, 0, 35, 0, 35, 35, 35, 35, 0, 35, 0, 35, 0, 0 )
@@ -152,8 +154,8 @@ __meta__ = {
 [node name="Fase1" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
-[node name="CombatMap" type="StaticBody2D" parent="Fase1"]
-z_index = -1
+[node name="CombatMap" type="StaticBody2D" parent="Fase1" groups=["walls"]]
+z_index = -3
 
 [node name="CombatMapSprite" type="Sprite" parent="Fase1/CombatMap"]
 position = Vector2( 420, 360 )
@@ -172,9 +174,8 @@ format = 1
 tile_data = PoolIntArray( 11, 0, 0, 12, 0, 0, 65547, 0, 0, 65548, 0, 0, 131083, 0, 0, 131084, 0, 0, 196619, 0, 0, 196620, 0, 0, 262155, 0, 0, 262156, 0, 0, 327691, 0, 0, 327692, 0, 0, 393227, 0, 0, 393228, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 524302, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589835, 3, 0, 589836, 3, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655371, 3, 0, 655372, 3, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 720905, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 851979, 0, 0, 851980, 0, 0, 917515, 0, 0, 917516, 0, 0, 983051, 0, 0, 983052, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1245195, 0, 0, 1245196, 0, 0 )
 script = ExtResource( 12 )
 
-[node name="AzulK" type="KinematicBody2D" parent="Fase1"]
+[node name="AzulK" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
 position = Vector2( 200, 200 )
-z_index = -1
 collision_mask = 2
 script = ExtResource( 8 )
 
@@ -188,6 +189,23 @@ position = Vector2( 0, -1 )
 shape = SubResource( 10 )
 
 [node name="spellPoint" type="Position2D" parent="Fase1/AzulK"]
+
+[node name="AzulK2" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
+position = Vector2( 600, 200 )
+z_index = -1
+collision_mask = 2
+script = ExtResource( 23 )
+
+[node name="Azul" type="Sprite" parent="Fase1/AzulK2"]
+texture = ExtResource( 22 )
+offset = Vector2( 0, -8 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2DAzul" type="CollisionShape2D" parent="Fase1/AzulK2"]
+position = Vector2( 0, -1 )
+shape = SubResource( 10 )
+
+[node name="spellPoint" type="Position2D" parent="Fase1/AzulK2"]
 
 [node name="Sprite" type="Sprite" parent="Fase1"]
 position = Vector2( -256, 335 )

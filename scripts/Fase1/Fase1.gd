@@ -11,6 +11,7 @@ enum PLAYER_STATE {
 
 var turnSequence = Array()
 var player_turn = PLAYER_STATE.WAIT
+var shot_runing = 0
 
 #LineEdit para conexão de rede
 var line_edit
@@ -159,3 +160,10 @@ func draw_sequence():
 		print(2)
 	else:
 		print("erro")
+
+func kill(wizard):
+	var icons = [$blueWizard,$greenWizard,$purpleWizard,$redWizard]
+	if(wizard == player_turn):
+		set_player_turn()
+	turnSequence.remove(turnSequence.find(wizard))
+	icons[wizard-1].kill()

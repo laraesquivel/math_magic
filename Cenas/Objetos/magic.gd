@@ -13,7 +13,7 @@ func _ready():
 		label.set_position(Vector2(x,(5*sin(0.5*x))))
 		#add_child(label)
 		#newCurve.add_point(Vector2(x,(5*sin(0.5*x))))
-		newCurve.add_point(Vector2(x,(50*sin(0.1*x))))
+		newCurve.add_point(Vector2(x,(0)))
 	curve = newCurve
 	
 	var animation = $PathFollow2D/AnimationPlayer.get_animation("shot")

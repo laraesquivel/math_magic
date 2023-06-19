@@ -18,7 +18,7 @@ func _ready():
 	print("KinematicBody lendo estado")
 	var daddy = get_parent()
 	print(daddy.get_player_turn())
-	this_wizard = get_parent().PLAYER_STATE.BLUE
+	this_wizard = get_parent().PLAYER_STATE.RED
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -69,4 +69,3 @@ func kill():
 	get_parent().kill(this_wizard)
 	$Azul.self_modulate = Color("404040")
 	$CollisionShape2DAzul.queue_free()
-	z_index = -2

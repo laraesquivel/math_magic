@@ -68,6 +68,11 @@ func _physics_process(delta):
 
 func kill():
 	get_parent().kill(this_wizard)
-	$Azul.self_modulate = Color("404040")
+	$Red.self_modulate = Color("404040")
 	$CollisionShape2DAzul.queue_free()
 	z_index = -2
+
+func spawn(spawnPoint : Vector2):
+	position = spawnPoint
+	oldPosition = position
+	newPosition = position

@@ -26,8 +26,8 @@ func _ready():
 
 func get_input():
 	velocity = Vector2()
-	if (get_parent().player_turn == this_wizard):
-		if ($"../runBarPorc".porcent > 0 and not($"../LineEdit".is_focus or get_parent().shot_runing)):
+	if (get_parent().player_turn == this_wizard and not(get_parent().shot_runing)):
+		if ($"../runBarPorc".porcent > 0 and not($"../LineEdit".is_focus)):
 			if Input.is_action_pressed("ui_right"):
 				velocity.x += 1
 			if Input.is_action_pressed("ui_left"):
@@ -50,6 +50,7 @@ func get_input():
 		#Verifica se foi solicitado o tiro
 		if Input.is_action_just_pressed("shot"):
 			#get_parent().set_player_turn()
+			get_parent().shot_runing = 1
 			var shotInstance = SHOT.instance()
 			get_parent().add_child(shotInstance)
 			shotInstance.z_index = -1
@@ -70,3 +71,8 @@ func kill():
 	$Azul.self_modulate = Color("404040")
 	$CollisionShape2DAzul.queue_free()
 	z_index = -2
+	
+func spawn(spawnPoint : Vector2):
+	position = spawnPoint
+	oldPosition = position
+	newPosition = position

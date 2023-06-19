@@ -26,11 +26,13 @@ func _on_SpellShot_body_entered(body : Node):
 			body.kill()
 			get_parent().get_parent().get_parent().set_player_turn()
 			get_parent().get_parent().queue_free()
+			get_parent().get_parent().get_parent().shot_runing = 0
 	if (body.is_in_group("walls")):
 		Global.magicShot = global_position
 		Global.emit_hit()
 		get_parent().get_parent().get_parent().set_player_turn()
 		get_parent().get_parent().queue_free()
+		get_parent().get_parent().get_parent().shot_runing = 0
 
 #func _on_VisibilityNotifier2D_screen_exited():
 #	queue_free()

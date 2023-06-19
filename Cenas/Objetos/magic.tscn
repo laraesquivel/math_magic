@@ -52,7 +52,7 @@ curve = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-lookahead = 100.0
+lookahead = 10.0
 
 [node name="SpellShot" parent="PathFollow2D" instance=ExtResource( 1 )]
 scale = Vector2( 1, 1 )

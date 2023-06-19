@@ -36,6 +36,7 @@ func _ready():
 	$HTTPRequest.request("http://127.0.0.1:5000/getPoints2/x**2+4+sin(x)/3/-3", headers, true, 0)
 	
 	generate_sequence_turn()
+	position_tokens()
 	set_player_turn()
 
 
@@ -167,3 +168,12 @@ func kill(wizard):
 		set_player_turn()
 	turnSequence.remove(turnSequence.find(wizard))
 	icons[wizard-1].kill()
+
+func position_tokens():
+	var tokens = [$AzulK, $GreenW, $PurpleW, $RedW]
+	tokens[turnSequence[0]-1].spawn(Vector2(200,200))
+	tokens[turnSequence[1]-1].spawn(Vector2(200+440,200+320))
+	if (turnSequence.size() >= 3):
+		tokens[turnSequence[2]-1].spawn(Vector2(200+440,200))
+		if (turnSequence.size() >= 4):
+			tokens[turnSequence[3]-1].spawn(Vector2(200,200+320))

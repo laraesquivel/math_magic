@@ -1,8 +1,8 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/NewcombatMap/BlueToken.png" type="Texture" id=1]
 [ext_resource path="res://assets/NewcombatMap/combatArea.png" type="Texture" id=2]
-[ext_resource path="res://scripts/Fase1/Azul.gd" type="Script" id=3]
+[ext_resource path="res://Cenas/GreenW.gd" type="Script" id=3]
 [ext_resource path="res://assets/NewcombatMap/CombatInterface.png" type="Texture" id=4]
 [ext_resource path="res://TextFont.tres" type="Theme" id=5]
 [ext_resource path="res://assets/NewcombatMap/Stone3.png" type="Texture" id=6]
@@ -22,7 +22,10 @@
 [ext_resource path="res://assets/NewcombatMap/runBarPorc.png" type="Texture" id=20]
 [ext_resource path="res://Cenas/runBarPorc.gd" type="Script" id=21]
 [ext_resource path="res://assets/NewcombatMap/RedToken.png" type="Texture" id=22]
-[ext_resource path="res://Cenas/redK.gd" type="Script" id=23]
+[ext_resource path="res://Cenas/RedW.gd" type="Script" id=23]
+[ext_resource path="res://Cenas/PurpleW.gd" type="Script" id=24]
+[ext_resource path="res://assets/NewcombatMap/GreenToken.png" type="Texture" id=25]
+[ext_resource path="res://assets/NewcombatMap/PurpleToken.png" type="Texture" id=26]
 
 [sub_resource type="ConcavePolygonShape2D" id=8]
 segments = PoolVector2Array( 0, 0, 35, 0, 35, 0, 35, 35, 35, 35, 0, 35, 0, 35, 0, 0 )
@@ -175,14 +178,13 @@ tile_data = PoolIntArray( 11, 0, 0, 12, 0, 0, 65547, 0, 0, 65548, 0, 0, 131083, 
 script = ExtResource( 12 )
 
 [node name="AzulK" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
-position = Vector2( 200, 200 )
+position = Vector2( 200, -100 )
 collision_mask = 2
 script = ExtResource( 8 )
 
 [node name="Azul" type="Sprite" parent="Fase1/AzulK"]
 texture = ExtResource( 1 )
 offset = Vector2( 0, -8 )
-script = ExtResource( 3 )
 
 [node name="CollisionShape2DAzul" type="CollisionShape2D" parent="Fase1/AzulK"]
 position = Vector2( 0, -1 )
@@ -190,22 +192,50 @@ shape = SubResource( 10 )
 
 [node name="spellPoint" type="Position2D" parent="Fase1/AzulK"]
 
-[node name="AzulK2" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
-position = Vector2( 600, 200 )
-z_index = -1
+[node name="RedW" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
+position = Vector2( 250, -100 )
 collision_mask = 2
 script = ExtResource( 23 )
 
-[node name="Azul" type="Sprite" parent="Fase1/AzulK2"]
+[node name="Red" type="Sprite" parent="Fase1/RedW"]
 texture = ExtResource( 22 )
 offset = Vector2( 0, -8 )
-script = ExtResource( 3 )
 
-[node name="CollisionShape2DAzul" type="CollisionShape2D" parent="Fase1/AzulK2"]
+[node name="CollisionShape2DAzul" type="CollisionShape2D" parent="Fase1/RedW"]
 position = Vector2( 0, -1 )
 shape = SubResource( 10 )
 
-[node name="spellPoint" type="Position2D" parent="Fase1/AzulK2"]
+[node name="spellPoint" type="Position2D" parent="Fase1/RedW"]
+
+[node name="GreenW" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
+position = Vector2( 300, -100 )
+collision_mask = 2
+script = ExtResource( 3 )
+
+[node name="Green" type="Sprite" parent="Fase1/GreenW"]
+texture = ExtResource( 25 )
+offset = Vector2( 0, -8 )
+
+[node name="CollisionShape2DAzul" type="CollisionShape2D" parent="Fase1/GreenW"]
+position = Vector2( 0, -1 )
+shape = SubResource( 10 )
+
+[node name="spellPoint" type="Position2D" parent="Fase1/GreenW"]
+
+[node name="PurpleW" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
+position = Vector2( 350, -100 )
+collision_mask = 2
+script = ExtResource( 24 )
+
+[node name="Purple" type="Sprite" parent="Fase1/PurpleW"]
+texture = ExtResource( 26 )
+offset = Vector2( 0, -8 )
+
+[node name="CollisionShape2DAzul" type="CollisionShape2D" parent="Fase1/PurpleW"]
+position = Vector2( 0, -1 )
+shape = SubResource( 10 )
+
+[node name="spellPoint" type="Position2D" parent="Fase1/PurpleW"]
 
 [node name="Sprite" type="Sprite" parent="Fase1"]
 position = Vector2( -256, 335 )

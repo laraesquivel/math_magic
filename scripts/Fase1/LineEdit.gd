@@ -1,10 +1,7 @@
 extends LineEdit
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var is_focus = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,3 +11,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_LineEdit_focus_entered():
+	is_focus = 1
+	print("selecionado")
+	
+
+func _on_LineEdit_focus_exited():
+	is_focus = 0
+	print("deselecionado")
+
+
+func _on_LineEdit_text_entered(new_text):
+	release_focus()

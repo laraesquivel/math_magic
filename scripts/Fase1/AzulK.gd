@@ -12,7 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-export (int) var speed = 100
+export (int) var speed = 50
 
 var velocity = Vector2()
 var shotDirection = Vector2.ZERO
@@ -21,7 +21,7 @@ var newPosition = position
 
 func get_input():
 	velocity = Vector2()
-	if ($"../runBarPorc".porcent > 0):
+	if ($"../runBarPorc".porcent > 0 and not($"../LineEdit".is_focus)):
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += 1
 		if Input.is_action_pressed("ui_left"):

@@ -24,8 +24,8 @@ func _on_SpellShot_body_entered(body : Node):
 	if (body.is_in_group("wizard")):
 		if (body.get_parent().player_turn != body.this_wizard):
 			body.kill()
-			get_parent().get_parent().get_parent().set_player_turn()
 			get_parent().get_parent().queue_free()
+			get_parent().get_parent().get_parent().set_player_turn()
 			get_parent().get_parent().get_parent().shot_runing = 0
 	if (body.is_in_group("walls")):
 		Global.magicShot = global_position

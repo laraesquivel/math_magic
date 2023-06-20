@@ -29,6 +29,10 @@ def getPoints():
    regex = math_analysis.RegCorrection(expression)
    regex.adicionar_parenteses()
    regex.adicionar_asterisco()
+   anti_c = regex.anti_constante()
+   if anti_c:
+       response={"status":500,"result":None}
+       return make_response(jsonify(response))
    #regex.detectar_funcao_modular()
    x = regex.detectar_variavel()
    if x is None:
@@ -46,21 +50,29 @@ def getPoints():
 
 @app.route("/getPoints2/<expression>/<dominio_max>/<dominio_min>",methods=['GET'])
 def getPoints2(expression,dominio_max,dominio_min):
-   print(f'{expression},{dominio_max},{dominio_min}')
-   dominio = (int(dominio_min),int(dominio_max))
+    try:
+        print(f'{expression},{dominio_max},{dominio_min}')
+        dominio = (int(dominio_min),int(dominio_max))
 
-   regex = math_analysis.RegCorrection(expression)
-   regex.adicionar_parenteses()
-   regex.adicionar_asterisco()
-   #regex.detectar_funcao_modular()
-   x = regex.detectar_variavel()
-   if x is None:
-       x="x"
-   print(x)
-   print(regex.expressao)
+        regex = math_analysis.RegCorrection(expression)
+        regex.adicionar_parenteses()
+        regex.adicionar_asterisco()
+        anti_c = regex.anti_constante()
+        if anti_c:
+            response={"status":500,"result":None}
+            return make_response(jsonify(response))
+        #regex.detectar_funcao_modular()
+        x = regex.detectar_variavel()
+        if x is None:
+            x="x"
+        print(x)
+        print(regex.expressao)
 
-   math_ana = math_analysis.Math_Analys(regex.expressao,x,dominio)
-   result = math_ana.get_points()
-   response = {"result":result}
-   #write_file(response,str(SHARE_PATH))
-   return str(response)
+        math_ana = math_analysis.Math_Analys(regex.expressao,x,dominio)
+        result = math_ana.get_points()
+        response = {"result":result}
+        #write_file(response,str(SHARE_PATH))
+        return str(response)
+    except:
+        response={"status":500,"result":None}
+        return make_response(jsonify(response))

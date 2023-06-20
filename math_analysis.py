@@ -31,6 +31,13 @@ class RegCorrection:
             return most_common_char
         return None
     
+    def anti_constante(self):
+        padrao = r"^[a-zA-Z]+$"
+        if re.match(padrao,self.expressao):
+            return True
+        else: 
+            return False
+    
     def separar_modulo(self,expressao):
         padrao = r"([+\-*/])?\s*\|([^|]+)\|"
         correspondencias = re.findall(padrao, expressao)

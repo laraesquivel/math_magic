@@ -9,6 +9,7 @@ enum PLAYER_STATE {
 	RED
 }
 
+var direction_shot = 1
 var turnSequence = Array()
 var player_turn = PLAYER_STATE.WAIT
 var shot_runing = 0

@@ -64,7 +64,7 @@ func get_input():
 		if Input.is_action_just_pressed("shot"):
 			#get_parent().set_player_turn()
 			var x = (get_parent()).direction_shot
-			var texto = (($"../LineEdit").get_text())#.replace(" ","")
+			var texto = (($"../LineEdit").get_text()).replace(" ","")
 			var query_string = generete_query_string(texto,x)
 			var headers = PoolStringArray()
 			headers.append("Content-Type: application/json")
@@ -96,17 +96,38 @@ func spawn(spawnPoint : Vector2):
 func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 			var response = body.get_string_from_utf8()
-			print(response)
+			#print(response)
 			print(headers)
+			var points = str(response).split(',')
+			var vector_array = []
+			
+			
+			for coords in points:
+				var aux = coords.split("/")
+				if len(aux) ==2:
+					var x = (float(aux[0])/100) * 640
+					var y = ((0-(float(aux[1])))/100) * 640
+					var v = Vector2(x,y)
+					vector_array.append(v)
+			print(vector_array)
+				
+			
+			#print(response['result'])
+			
+			#if points['status'] != 500:
+			#	var response_list = points['result']
+			#	for t in response_list:
+			#		print(t)
+			#	get_parent().shot_runing = 1
+			#	var shotInstance = SHOT.instance()
+			#	get_parent().add_child(shotInstance)
+			#	shotInstance.z_index = -1
+			#	shotInstance.position = $spellPoint.global_position 
+			#shotInstance.set_diraction(shotDirection)
 			
 	else:
 		print("An error occurred in the HTTP request.")
-		get_parent().shot_runing = 1
-		var shotInstance = SHOT.instance()
-		get_parent().add_child(shotInstance)
-		shotInstance.z_index = -1
-		shotInstance.position = $spellPoint.global_position
-		#shotInstance.set_diraction(shotDirection)
+	
 				
 
 

@@ -2,7 +2,7 @@ extends Node
 
 #esse vetor indica quais magos foram selecinoado
 # Blue | Green | Purple | Red
-var players = [false,true,false,true]
+var players = [true,true,false,false]
 
 var magicShot = Vector2.ZERO
 

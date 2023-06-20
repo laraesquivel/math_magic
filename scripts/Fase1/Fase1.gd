@@ -165,10 +165,24 @@ func draw_sequence():
 
 func kill(wizard):
 	var icons = [$blueWizard,$greenWizard,$purpleWizard,$redWizard]
-	if(wizard == player_turn):
+	if (wizard == player_turn):
 		set_player_turn()
 	turnSequence.remove(turnSequence.find(wizard))
 	icons[wizard-1].kill()
+	if (turnSequence.size() == 1):
+		end_game()
+
+func end_game():
+	var winner = turnSequence[0]
+	$WinerBackground.position.x = 640
+	if (winner == PLAYER_STATE.BLUE):
+		$BlueWiner.position.y = 360
+	elif (winner == PLAYER_STATE.GREEN):
+		$GreenWiner.position.y = 360
+	elif (winner == PLAYER_STATE.PURPLE):
+		$PurpleWiner.position.y = 360
+	elif (winner == PLAYER_STATE.RED):
+		$RedWiner.position.y = 360
 
 func position_tokens():
 	var tokens = [$AzulK, $GreenW, $PurpleW, $RedW]

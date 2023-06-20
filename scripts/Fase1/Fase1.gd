@@ -183,6 +183,7 @@ func end_game():
 		$PurpleWiner.position.y = 360
 	elif (winner == PLAYER_STATE.RED):
 		$RedWiner.position.y = 360
+	$Timer.start()
 
 func position_tokens():
 	var tokens = [$AzulK, $GreenW, $PurpleW, $RedW]
@@ -192,3 +193,7 @@ func position_tokens():
 		tokens[turnSequence[2]-1].spawn(Vector2(200+440,200))
 		if (turnSequence.size() >= 4):
 			tokens[turnSequence[3]-1].spawn(Vector2(200,200+320))
+
+
+func _on_Timer_timeout():
+	get_tree().change_scene("res://Menu.tscn")

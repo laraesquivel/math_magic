@@ -34,7 +34,7 @@ func _ready():
 	caminho_absoluto += "pontos.csv/"
 	print(caminho_absoluto)
 	
-	$HTTPRequest.request("http://127.0.0.1:5000/getPoints2/x**2+4+sin(x)/3/-3", headers, true, 0)
+	#$HTTPRequest.request("http://127.0.0.1:5000/getPoints2/x**2+4+sin(x)/3/-3", headers, true, 0)
 	
 	generate_sequence_turn()
 	position_tokens()
@@ -45,10 +45,10 @@ func _ready():
 func _input(event):
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and event.pressed:
 		get_tree().quit()
-	if event is InputEventKey:
-		var line_edit = $LineEdit  # Substitua "$LineEdit" pelo caminho correto para o nó LineEdit em sua cena
-		if event.pressed and event.scancode == KEY_ENTER:
-			line_edit.emit_signal("text_entered")
+	#if event is InputEventKey:
+	#	var line_edit = $LineEdit  # Substitua "$LineEdit" pelo caminho correto para o nó LineEdit em sua cena
+	#	if event.pressed and event.scancode == :
+	#		line_edit.emit_signal("text_entered")
 			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -118,7 +118,7 @@ func _on_LineEdit_text_entered(new_text):
 	var query_string = generete_query_string(texto,1)
 	var headers = PoolStringArray()
 	headers.append("Content-Type: application/json")
-	$HTTPRequest.request(query_string, headers, true, 0)
+	#$HTTPRequest.request(query_string, headers, true, 0)
 
 
 #  Verifica quantos e quais magos iram jogar e att o turnSequence com uma ordem

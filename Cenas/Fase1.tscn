@@ -194,6 +194,8 @@ shape = SubResource( 10 )
 
 [node name="spellPoint" type="Position2D" parent="Fase1/AzulK"]
 
+[node name="HTTPA" type="HTTPRequest" parent="Fase1/AzulK"]
+
 [node name="RedW" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
 position = Vector2( 250, -100 )
 collision_mask = 2
@@ -286,23 +288,24 @@ position = Vector2( 1072, 580.5 )
 texture = ExtResource( 20 )
 script = ExtResource( 21 )
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Fase1"]
 anchor_right = 0.048
 anchor_bottom = 0.071
 margin_left = 910.0
 margin_top = 593.0
 margin_right = 920.0
-margin_bottom = 612.0
+margin_bottom = 624.0
 theme = ExtResource( 5 )
 script = ExtResource( 28 )
 
-[node name="Sprite" type="Sprite" parent="Button"]
+[node name="Sprite" type="Sprite" parent="Fase1/Button"]
 position = Vector2( 35.5, 34 )
 texture = ExtResource( 27 )
 
+[connection signal="request_completed" from="Fase1/AzulK/HTTPA" to="Fase1/AzulK" method="_on_HTTPAZUL_request_completed"]
 [connection signal="focus_entered" from="Fase1/LineEdit" to="Fase1/LineEdit" method="_on_LineEdit_focus_entered"]
 [connection signal="focus_exited" from="Fase1/LineEdit" to="Fase1/LineEdit" method="_on_LineEdit_focus_exited"]
 [connection signal="text_entered" from="Fase1/LineEdit" to="Fase1" method="_on_LineEdit_text_entered"]
 [connection signal="text_entered" from="Fase1/LineEdit" to="Fase1/LineEdit" method="_on_LineEdit_text_entered"]
 [connection signal="request_completed" from="Fase1/HTTPRequest" to="Fase1" method="_on_HTTPRequest_request_completed"]
-[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Fase1/Button" to="Fase1/Button" method="_on_Button_pressed"]

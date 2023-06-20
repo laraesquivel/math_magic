@@ -15,13 +15,26 @@ var newPosition = position
 var this_wizard
 
 func _ready():
+	$HTTPA.connect("request_completed", self, "_on_HTTPRequest_request_completed")
 	print("KinematicBody lendo estado")
+	
 	var daddy = get_parent()
 	print(daddy.get_player_turn())
 	this_wizard = get_parent().PLAYER_STATE.BLUE
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func generete_query_string(math_expression,valor):
+	var BASE_STR = "http://127.0.0.1:5000/getPoints2/"
+	BASE_STR += math_expression + "/"
+	print(BASE_STR)
+	if valor == 1:
+		BASE_STR += "100/0"
+	elif valor==-1:
+		BASE_STR +="0/-100"
+	print(BASE_STR)
+	return BASE_STR
 
 
 func get_input():
@@ -50,12 +63,14 @@ func get_input():
 		#Verifica se foi solicitado o tiro
 		if Input.is_action_just_pressed("shot"):
 			#get_parent().set_player_turn()
-			get_parent().shot_runing = 1
-			var shotInstance = SHOT.instance()
-			get_parent().add_child(shotInstance)
-			shotInstance.z_index = -1
-			shotInstance.position = $spellPoint.global_position
-			#shotInstance.set_diraction(shotDirection)
+			var x = (get_parent()).direction_shot
+			var texto = (($"../LineEdit").get_text())#.replace(" ","")
+			var query_string = generete_query_string(texto,x)
+			var headers = PoolStringArray()
+			headers.append("Content-Type: application/json")
+			$HTTPA.request(query_string, headers, true, 0)
+	
+
 			
 		velocity *= speed
 	
@@ -76,3 +91,276 @@ func spawn(spawnPoint : Vector2):
 	position = spawnPoint
 	oldPosition = position
 	newPosition = position
+
+
+func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
+	if response_code == 200:
+			var response = body.get_string_from_utf8()
+			print(response)
+			print(headers)
+			
+	else:
+		print("An error occurred in the HTTP request.")
+		get_parent().shot_runing = 1
+		var shotInstance = SHOT.instance()
+		get_parent().add_child(shotInstance)
+		shotInstance.z_index = -1
+		shotInstance.position = $spellPoint.global_position
+		#shotInstance.set_diraction(shotDirection)
+				
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

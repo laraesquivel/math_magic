@@ -31,9 +31,9 @@ func generete_query_string(math_expression,valor):
 	BASE_STR += math_expression + "/"
 	print(BASE_STR)
 	if valor == 1:
-		BASE_STR += "100/0"
+		BASE_STR += "200/0"
 	elif valor==-1:
-		BASE_STR +="0/-100"
+		BASE_STR +="0/-200"
 	print(BASE_STR)
 	return BASE_STR
 

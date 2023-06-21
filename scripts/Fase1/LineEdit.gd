@@ -15,12 +15,10 @@ func _ready():
 
 func _on_LineEdit_focus_entered():
 	is_focus = 1
-	print("selecionado")
 	
 
 func _on_LineEdit_focus_exited():
 	is_focus = 0
-	print("deselecionado")
 
 
 func _on_LineEdit_text_entered(new_text):

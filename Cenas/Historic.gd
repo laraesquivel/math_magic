@@ -12,9 +12,6 @@ func _ready():
 
 func add(color, expre):
 	for i in range(10):
-		print(i+1, " Para ", i)
-		print("Color: ", histFX[i+1].modulate)
-		print("text: ", histFX[i+1].text)
 		histFX[i].set_text(histFX[i+1].text)
 		histEXP[i].set_text(histEXP[i+1].text)
 		histFX[i].modulate = histFX[i+1].modulate

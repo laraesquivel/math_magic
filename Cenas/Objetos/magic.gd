@@ -23,7 +23,7 @@ func _ready():
 #	curve = newCurve
 	
 	var animation = $PathFollow2D/AnimationPlayer.get_animation("shot")
-	var animationTime = 5
+	var animationTime = curve.get_baked_length() / speed
 	animation.length = animationTime 
 	var track_index = animation.find_track(NodePath(".:unit_offset"))
 	var keyId = animation.bezier_track_insert_key(track_index, animationTime, 1)#animation.track_insert_key(track_index, animationTime, 1.0)

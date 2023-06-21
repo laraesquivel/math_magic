@@ -57,12 +57,15 @@ def getPoints2(expression,dominio_max,dominio_min):
         regex = math_analysis.RegCorrection(expression)
         regex.adicionar_parenteses()
         regex.adicionar_asterisco()
+        '''
         anti_c = regex.anti_constante()
+        print("Ok")
         if anti_c:
-            response={"status":500,"result":None}
-            return make_response(jsonify(response))
+            response={"status":500,"result":None,"anti":True}
+            return '',500 '''
         #regex.detectar_funcao_modular()
         x = regex.detectar_variavel()
+        print("ok2")
         if x is None:
             x="x"
         print(x)
@@ -71,8 +74,10 @@ def getPoints2(expression,dominio_max,dominio_min):
         math_ana = math_analysis.Math_Analys(regex.expressao,x,dominio)
         result = math_ana.get_points()
         response = {"result":result}
+        print("ok3")
         #write_file(response,str(SHARE_PATH))
-        return str(response)
+        return make_response(result)
     except:
+        print("ok4")
         response={"status":500,"result":None}
-        return make_response(jsonify(response))
+        return '',500

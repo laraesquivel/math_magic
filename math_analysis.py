@@ -55,10 +55,12 @@ class Math_Analys:
         x_values = list(range(self.dominio[0], self.dominio[1]+ 1, 1))
         y_values = [expression.subs(x, float(x_val)) for x_val in x_values]
 
-        points = []
+       #points = []
+        points = ''
         for x_val, y_val in zip(x_values, y_values):
             print(f'x = {x_val}, y = {y_val}')
-            points.append(f'({x_val},{y_val})')
+            #points.append({'x_val':x_val,'y_val':y_val})
+            points = f'{points}{x_val}/{y_val},'
         return points
 
 

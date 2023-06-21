@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Menu/backGraundMenu.png" type="Texture" id=1]
 [ext_resource path="res://assets/Menu/buttonContinuarDesativ.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scripts/menu/Sair.gd" type="Script" id=10]
 [ext_resource path="res://scripts/menu/ComoJogar.gd" type="Script" id=11]
 [ext_resource path="res://scripts/menu/Menu.gd" type="Script" id=12]
+[ext_resource path="res://Configura.gd" type="Script" id=13]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -57,6 +58,7 @@ margin_top = 216.0
 margin_right = 501.0
 margin_bottom = 320.0
 icon = ExtResource( 3 )
+script = ExtResource( 13 )
 
 [node name="ComoJogar" type="Button" parent="VBoxContainer"]
 margin_top = 324.0
@@ -73,5 +75,6 @@ icon = ExtResource( 7 )
 script = ExtResource( 10 )
 
 [connection signal="pressed" from="VBoxContainer/NovoJogo" to="VBoxContainer/NovoJogo" method="_on_NovoJogo_pressed"]
+[connection signal="pressed" from="VBoxContainer/Configura" to="VBoxContainer/Configura" method="_on_Configura_pressed"]
 [connection signal="pressed" from="VBoxContainer/ComoJogar" to="VBoxContainer/ComoJogar" method="_on_ComoJogar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Sair" to="VBoxContainer/Sair" method="_on_Sair_pressed"]

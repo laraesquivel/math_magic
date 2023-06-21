@@ -1,0 +1,114 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/Config/labelNumerodeJogadores.png" type="Texture" id=1]
+[ext_resource path="res://assets/Config/woodBeckground.png" type="Texture" id=2]
+[ext_resource path="res://assets/SelectLevel/background.png" type="Texture" id=3]
+[ext_resource path="res://assets/Config/labelConfiguração.png" type="Texture" id=4]
+[ext_resource path="res://TextFont.tres" type="Theme" id=5]
+[ext_resource path="res://assets/Config/PurpleMageSelect.png" type="Texture" id=6]
+[ext_resource path="res://assets/Config/labelSelecioneosmagos.png" type="Texture" id=7]
+[ext_resource path="res://assets/Config/GreenMageSelect.png" type="Texture" id=8]
+[ext_resource path="res://assets/Config/number4.png" type="Texture" id=9]
+[ext_resource path="res://assets/Config/RedMageSelect.png" type="Texture" id=10]
+[ext_resource path="res://assets/Config/number2.png" type="Texture" id=11]
+[ext_resource path="res://assets/Config/number3.png" type="Texture" id=12]
+[ext_resource path="res://assets/Config/BlueMageSelect.png" type="Texture" id=13]
+[ext_resource path="res://Cenas/menus/config.gd" type="Script" id=14]
+[ext_resource path="res://assets/Config/buttonSalvar.png" type="Texture" id=15]
+
+[node name="Config" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="Beckground" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 3 )
+
+[node name="woodBeckground" type="Sprite" parent="."]
+position = Vector2( 640, 359 )
+texture = ExtResource( 2 )
+
+[node name="labelConfiguração" type="Sprite" parent="."]
+position = Vector2( 640, 90 )
+texture = ExtResource( 4 )
+
+[node name="labelNumerodeJogadores" type="Sprite" parent="."]
+position = Vector2( 344, 196 )
+texture = ExtResource( 1 )
+
+[node name="number2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 550, 196 )
+texture = ExtResource( 11 )
+
+[node name="number3" type="Sprite" parent="."]
+visible = false
+position = Vector2( 550, 196 )
+texture = ExtResource( 12 )
+
+[node name="number4" type="Sprite" parent="."]
+visible = false
+position = Vector2( 550, 196 )
+texture = ExtResource( 9 )
+
+[node name="labelSelect" type="Sprite" parent="."]
+position = Vector2( 0, -197 )
+texture = ExtResource( 7 )
+offset = Vector2( 640, 500 )
+
+[node name="BlueMage" type="Button" parent="."]
+margin_left = 175.0
+margin_top = 392.0
+margin_right = 415.0
+margin_bottom = 578.0
+theme = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="BlueMage"]
+position = Vector2( 119, 93 )
+texture = ExtResource( 13 )
+
+[node name="GreenMage" type="Button" parent="."]
+margin_left = 413.0
+margin_top = 391.0
+margin_right = 653.0
+margin_bottom = 577.0
+theme = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="GreenMage"]
+position = Vector2( 119, 93 )
+texture = ExtResource( 8 )
+
+[node name="PurpleMage" type="Button" parent="."]
+margin_left = 652.0
+margin_top = 391.0
+margin_right = 892.0
+margin_bottom = 577.0
+theme = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="PurpleMage"]
+position = Vector2( 119, 93 )
+texture = ExtResource( 6 )
+
+[node name="RedMage" type="Button" parent="."]
+margin_left = 890.0
+margin_top = 391.0
+margin_right = 1130.0
+margin_bottom = 577.0
+theme = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="RedMage"]
+position = Vector2( 119, 93 )
+texture = ExtResource( 10 )
+
+[node name="Salvar" type="Button" parent="."]
+margin_left = 577.0
+margin_top = 615.0
+margin_right = 691.0
+margin_bottom = 656.0
+theme = ExtResource( 5 )
+icon = ExtResource( 15 )
+
+[connection signal="pressed" from="BlueMage" to="." method="_on_BlueMage_pressed"]
+[connection signal="pressed" from="GreenMage" to="." method="_on_GreenMage_pressed"]
+[connection signal="pressed" from="PurpleMage" to="." method="_on_PurpleMage_pressed"]
+[connection signal="pressed" from="RedMage" to="." method="_on_RedMage_pressed"]
+[connection signal="pressed" from="Salvar" to="." method="_on_Salvar_pressed"]

@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://assets/CombatMap/Hilds___.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Config/notSelect.png" type="Texture" id=2]
+[ext_resource path="res://assets/Config/select.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -34,6 +36,10 @@ Button/styles/focus = SubResource( 5 )
 Button/styles/hover = SubResource( 6 )
 Button/styles/normal = SubResource( 7 )
 Button/styles/pressed = SubResource( 8 )
+CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+CheckBox/icons/checked = ExtResource( 3 )
+CheckBox/icons/radio_checked = ExtResource( 2 )
+CheckBox/icons/unchecked = ExtResource( 2 )
 LineEdit/colors/clear_button_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
 LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )

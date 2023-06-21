@@ -28,3 +28,4 @@ func _on_easy_mouse_exited():
 
 func _on_easy_pressed():
 	Global.level = 1
+	get_tree().change_scene("res://Cenas/Fase1.tscn")

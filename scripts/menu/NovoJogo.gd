@@ -17,4 +17,4 @@ func _ready():
 
 
 func _on_NovoJogo_pressed():
-	get_tree().change_scene("res://Cenas/Fase1.tscn")
+	get_tree().change_scene("res://Cenas/menus/levelSelect.tscn")

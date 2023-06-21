@@ -96,6 +96,7 @@ func _ready():
 	
 	#$HTTPRequest.request("http://127.0.0.1:5000/getPoints2/x**2+4+sin(x)/3/-3", headers, true, 0)
 	
+	generate_combat_map()
 	generate_sequence_turn()
 	position_tokens()
 	set_player_turn()
@@ -246,5 +247,11 @@ func position_tokens():
 func _on_Timer_timeout():
 	get_tree().change_scene("res://Menu.tscn")
 
-
+func generate_combat_map():
+	if(Global.level == 1):
+		$Walls2.position = (Vector2(-2,10))
+	elif(Global.level == 2):
+		$Walls.position = (Vector2(-2,10))
+	else:
+		$Walls3.position = (Vector2(-2,10))
 

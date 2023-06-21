@@ -54,7 +54,10 @@ class Math_Analys:
         expression = sympy.parse_expr(self.expressao)
         x_values = list(range(self.dominio[0], self.dominio[1]+ 1, 1))
         y_values = [expression.subs(x, float(x_val)) for x_val in x_values]
-        y_values = [(new_y - y_values[0]) for new_y in y_values]
+        if self.dominio[0] == 0:
+            y_values = [(new_y - y_values[0]) for new_y in y_values]
+        else:
+            y_values = [(new_y - y_values[len(y_values)-1]) for new_y in y_values]
 
        #points = []
         points = ''

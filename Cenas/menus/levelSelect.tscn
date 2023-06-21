@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://TextFont.tres" type="Theme" id=1]
+[ext_resource path="res://Cenas/menus/medium.gd" type="Script" id=2]
+[ext_resource path="res://Cenas/menus/hard.gd" type="Script" id=3]
+[ext_resource path="res://Cenas/menus/easy.gd" type="Script" id=4]
+[ext_resource path="res://assets/SelectLevel/goBackButton.png" type="Texture" id=5]
+[ext_resource path="res://assets/SelectLevel/background.png" type="Texture" id=6]
+[ext_resource path="res://assets/SelectLevel/titleSelectMap.png" type="Texture" id=7]
+[ext_resource path="res://assets/SelectLevel/hardLevel.png" type="Texture" id=8]
+[ext_resource path="res://assets/SelectLevel/easyLevel.png" type="Texture" id=9]
+[ext_resource path="res://assets/SelectLevel/mediumLevel.png" type="Texture" id=10]
+[ext_resource path="res://Cenas/menus/goBeck.gd" type="Script" id=11]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Beckground" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 6 )
+
+[node name="title" type="Sprite" parent="."]
+position = Vector2( 640, 85 )
+texture = ExtResource( 7 )
+
+[node name="easy" type="Button" parent="."]
+margin_left = 83.0
+margin_top = 233.0
+margin_right = 450.0
+margin_bottom = 520.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="easy"]
+position = Vector2( 177.5, 140.5 )
+texture = ExtResource( 9 )
+
+[node name="medium" type="Button" parent="."]
+margin_left = 469.0
+margin_top = 233.0
+margin_right = 836.0
+margin_bottom = 520.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="medium"]
+position = Vector2( 177.5, 140.5 )
+texture = ExtResource( 10 )
+
+[node name="hard" type="Button" parent="."]
+margin_left = 853.0
+margin_top = 233.0
+margin_right = 1220.0
+margin_bottom = 520.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="SpriteHard" type="Sprite" parent="hard"]
+position = Vector2( 177.5, 140.5 )
+texture = ExtResource( 8 )
+
+[node name="goBeck" type="Button" parent="."]
+margin_left = 487.0
+margin_top = 577.0
+margin_right = 825.0
+margin_bottom = 682.0
+theme = ExtResource( 1 )
+icon = ExtResource( 5 )
+script = ExtResource( 11 )
+
+[connection signal="mouse_entered" from="easy" to="easy" method="_on_easy_mouse_entered"]
+[connection signal="mouse_exited" from="easy" to="easy" method="_on_easy_mouse_exited"]
+[connection signal="pressed" from="easy" to="easy" method="_on_easy_pressed"]
+[connection signal="mouse_entered" from="medium" to="medium" method="_on_medium_mouse_entered"]
+[connection signal="mouse_exited" from="medium" to="medium" method="_on_medium_mouse_exited"]
+[connection signal="pressed" from="medium" to="medium" method="_on_medium_pressed"]
+[connection signal="mouse_entered" from="hard" to="hard" method="_on_hard_mouse_entered"]
+[connection signal="mouse_exited" from="hard" to="hard" method="_on_hard_mouse_exited"]
+[connection signal="pressed" from="hard" to="hard" method="_on_hard_pressed"]
+[connection signal="pressed" from="goBeck" to="goBeck" method="_on_goBeck_pressed"]

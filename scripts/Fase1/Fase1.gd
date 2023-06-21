@@ -20,65 +20,77 @@ var shot_runing = 0
 var line_edit
 # Called when the node enters the scene tree for the first time.
 
-func set_label(texto):
-	for i in range(len(labels)):
-		if labels[i] == 0:
-			labels[i] = 1
-			var t = "F(x)= " + texto
-			if i==0:
-				$VBoxContainer/Label1.set_text(t)
-			elif i==1:
-				$VBoxContainer/Label2.set_text(t)
-			elif i==2:
-				$VBoxContainer/Label3.set_text(t)
-			elif i==3:
-				$VBoxContainer/Label4.set_text(t)
-			elif i==4:
-				$VBoxContainer/Label5.set_text(t)
-			elif i==5:
-				$VBoxContainer/Label6.set_text(t)
-			elif i==6:
-				$VBoxContainer/Label7.set_text(t)
-			elif i==7:
-				$VBoxContainer/Label8.set_text(t)
-			elif i==8:
-				$VBoxContainer/Label9.set_text(t)
-			elif i==9:
-				$VBoxContainer/Label10.set_text(t)
-			elif i==10:
-				$VBoxContainer/Label11.set_text(t)
-			return true
-	for k in range(len(labels)):
-		labels[k] = 0
-	#get_node("VBoxContainer/Label1").set_text(texto)
-	labels[0] = 1;
-	
-	var t = "F(x)="
-
-	$VBoxContainer/Label1.set_text(t+texto)
-
-	$VBoxContainer/Label2.set_text(t)
-
-	$VBoxContainer/Label3.set_text(t)
-
-	$VBoxContainer/Label4.set_text(t)
-
-	$VBoxContainer/Label5.set_text(t)
-
-	$VBoxContainer/Label6.set_text(t)
-
-	$VBoxContainer/Label7.set_text(t)
-
-	$VBoxContainer/Label8.set_text(t)
-
-	$VBoxContainer/Label9.set_text(t)
-
-	$VBoxContainer/Label10.set_text(t)
-
-	$VBoxContainer/Label11.set_text(t)
-	return false
+func set_label(wizard, text):
+	var colorFX
+	if (wizard == PLAYER_STATE.BLUE):
+		colorFX = Color("002FFF")
+	elif (wizard == PLAYER_STATE.GREEN):
+		colorFX = Color("26802E")
+	elif (wizard == PLAYER_STATE.PURPLE):
+		colorFX = Color("452073")
+	elif (wizard == PLAYER_STATE.RED):
+		colorFX = Color("B30000")
+	else:
+		colorFX = Color("FFFFFF")
 		
-			
+	$Historic.add(colorFX,text)
+#	for i in range(len(labels)):
+#		if labels[i] == 0:
+#			labels[i] = 1
+#			var t = "F(x)= " + texto
+#			if i==0:
+#				$VBoxContainer/Label1.set_text(t)
+#			elif i==1:
+#				$VBoxContainer/Label2.set_text(t)
+#			elif i==2:
+#				$VBoxContainer/Label3.set_text(t)
+#			elif i==3:
+#				$VBoxContainer/Label4.set_text(t)
+#			elif i==4:
+#				$VBoxContainer/Label5.set_text(t)
+#			elif i==5:
+#				$VBoxContainer/Label6.set_text(t)
+#			elif i==6:
+#				$VBoxContainer/Label7.set_text(t)
+#			elif i==7:
+#				$VBoxContainer/Label8.set_text(t)
+#			elif i==8:
+#				$VBoxContainer/Label9.set_text(t)
+#			elif i==9:
+#				$VBoxContainer/Label10.set_text(t)
+#			elif i==10:
+#				$VBoxContainer/Label11.set_text(t)
+#			return true
+#	for k in range(len(labels)):
+#		labels[k] = 0
+#	#get_node("VBoxContainer/Label1").set_text(texto)
+#	labels[0] = 1;
+#	
+#	var t = "F(x)="
+#
+#	$VBoxContainer/Label1.set_text(t+texto)
+#
+#	$VBoxContainer/Label2.set_text(t)
+#
+#	$VBoxContainer/Label3.set_text(t)
+#
+#	$VBoxContainer/Label4.set_text(t)
+#
+#	$VBoxContainer/Label5.set_text(t)
+#
+#	$VBoxContainer/Label6.set_text(t)
+#
+#	$VBoxContainer/Label7.set_text(t)
+#
+#	$VBoxContainer/Label8.set_text(t)
+#
+#	$VBoxContainer/Label9.set_text(t)
+#
+#	$VBoxContainer/Label10.set_text(t)
+#
+#	$VBoxContainer/Label11.set_text(t)
+	return false
+
 
 func _ready():
 	

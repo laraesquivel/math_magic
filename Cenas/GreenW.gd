@@ -118,7 +118,7 @@ func _on_HTTPG_request_completed(result, response_code, headers, body):
 					var v = Vector2(x,y)
 					vector_array.append(v)
 
-			var booleano = (get_parent()).set_label(expression)
+			var booleano = (get_parent()).set_label(this_wizard,expression)
 			if (get_parent()).direction_shot == -1:
 				vector_array.invert()
 			vector_array.insert(0,Vector2(0,0))

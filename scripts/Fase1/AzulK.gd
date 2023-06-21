@@ -114,10 +114,10 @@ func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
 					var v = Vector2(x,y)
 					vector_array.append(v)
 			#print(vector_array)
-			
 			var booleano = (get_parent()).set_label(expression)
 			if (get_parent()).direction_shot == -1:
 				vector_array.invert()
+			vector_array.insert(0,Vector2(0,0))
 			get_parent().shot_runing = 1
 		
 			var shotInstance = SHOT.instance()

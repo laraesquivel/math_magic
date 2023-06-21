@@ -117,7 +117,8 @@ func _on_HTTPR_request_completed(result, response_code, headers, body):
 			var booleano = (get_parent()).set_label(expression)
 			if (get_parent()).direction_shot == -1:
 				vector_array.invert()
-				
+
+			vector_array.insert(0,Vector2(0,0))
 			get_parent().shot_runing = 1
 			var shotInstance = SHOT.instance()
 			shotInstance.new_curve(vector_array)

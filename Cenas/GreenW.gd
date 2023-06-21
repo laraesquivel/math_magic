@@ -117,10 +117,11 @@ func _on_HTTPG_request_completed(result, response_code, headers, body):
 					var y = ((0-(float(aux[1])))/100) * 640
 					var v = Vector2(x,y)
 					vector_array.append(v)
-			print(vector_array)
+
 			var booleano = (get_parent()).set_label(expression)
 			if (get_parent()).direction_shot == -1:
 				vector_array.invert()
+			vector_array.insert(0,Vector2(0,0))
 			get_parent().shot_runing = 1
 			var shotInstance = SHOT.instance()
 			shotInstance.new_curve(vector_array)

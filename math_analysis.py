@@ -58,10 +58,11 @@ class Math_Analys:
        #points = []
         points = ''
         for x_val, y_val in zip(x_values, y_values):
-            print(f'x = {x_val}, y = {y_val}')
+           # print(f'x = {x_val}, y = {y_val}')
             #points.append({'x_val':x_val,'y_val':y_val})
             points = f'{points}{x_val}/{y_val},'
         return points
+    
 
 
 

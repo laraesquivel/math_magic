@@ -3,7 +3,7 @@ from urllib.parse import quote, unquote
 import math_analysis
 import os
 from pathlib import Path
-from utils import write_file
+from utils import write_file,check_results
 
 caminho_atual = Path().resolve()
 
@@ -68,15 +68,20 @@ def getPoints2(expression,dominio_max,dominio_min):
         print("ok2")
         if x is None:
             x="x"
-        print(x)
-        print(regex.expressao)
+        #print(x)
+        #print(regex.expressao)
 
         math_ana = math_analysis.Math_Analys(regex.expressao,x,dominio)
         result = math_ana.get_points()
-        response = {"result":result}
-        print("ok3")
-        #write_file(response,str(SHARE_PATH))
-        return make_response(result)
+        print("ok pre bool")
+        boolean_check = check_results(result)
+        if boolean_check:
+            print("ok3")
+            #write_file(response,str(SHARE_PATH))
+            print(result)
+            return make_response(result,200)
+        else:
+            return '',500
     except:
         print("ok4")
         response={"status":500,"result":None}

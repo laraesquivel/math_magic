@@ -13,3 +13,16 @@ def write_file(response,share_path=None):
     #df.to_json(share_path)
     df.to_csv(share_path, index_label='chave', header=['valor'])
 
+def check_results(big_string):
+    r = big_string.split(',')
+    for i in range(len(r)):
+       
+        a = (r[i].split("/"))
+        try:
+            print("'ok5")
+            y = float(a[1])
+            return True
+        except:
+            print("ok7")
+            return False
+

@@ -11,7 +11,8 @@ var velocity = Vector2()
 var shotDirection = Vector2.ZERO
 var oldPosition = position
 var newPosition = position
-
+var expression;
+var focus_activate = false
 var this_wizard
 
 func _ready():
@@ -63,13 +64,15 @@ func get_input():
 		#Verifica se foi solicitado o tiro
 		if Input.is_action_just_pressed("shot"):
 			#get_parent().set_player_turn()
-			var x = (get_parent()).direction_shot
-			var texto = (($"../LineEdit").get_text()).replace(" ","")
-			var query_string = generete_query_string(texto,x)
-			var headers = PoolStringArray()
-			headers.append("Content-Type: application/json")
-			$HTTPG.request(query_string, headers, true, 0)
-	
+			if !focus_activate:
+				var x = (get_parent()).direction_shot
+				var texto = (($"../LineEdit").get_text()).replace(" ","")
+				expression = texto
+				var query_string = generete_query_string(texto,x)
+				var headers = PoolStringArray()
+				headers.append("Content-Type: application/json")
+				$HTTPG.request(query_string, headers, true, 0)
+		
 
 			
 		velocity *= speed
@@ -115,6 +118,7 @@ func _on_HTTPG_request_completed(result, response_code, headers, body):
 					var v = Vector2(x,y)
 					vector_array.append(v)
 			print(vector_array)
+			var booleano = (get_parent()).set_label(expression)
 			if (get_parent()).direction_shot == -1:
 				vector_array.invert()
 			get_parent().shot_runing = 1
@@ -139,3 +143,12 @@ func _on_HTTPG_request_completed(result, response_code, headers, body):
 			
 	else:
 		print("An error occurred in the HTTP request.")
+		($"../LineEdit").set_text("Função Invalida")
+
+
+func _on_LineEdit_focus_entered():
+	focus_activate = true
+
+
+func _on_LineEdit_focus_exited():
+	focus_activate = false

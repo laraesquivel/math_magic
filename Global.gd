@@ -4,6 +4,8 @@ extends Node
 # Blue | Green | Purple | Red
 var players = [true,true,false,false]
 
+
+
 var magicShot = Vector2.ZERO
 
 signal wallHitted

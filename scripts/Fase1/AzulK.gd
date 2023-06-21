@@ -11,8 +11,10 @@ var velocity = Vector2()
 var shotDirection = Vector2.ZERO
 var oldPosition = position
 var newPosition = position
-
+var expression;
 var this_wizard
+
+var focus_activate = false
 
 func _ready():
 	$HTTPA.connect("request_completed", self, "_on_HTTPRequest_request_completed")
@@ -63,12 +65,14 @@ func get_input():
 		#Verifica se foi solicitado o tiro
 		if Input.is_action_just_pressed("shot"):
 			#get_parent().set_player_turn()
-			var x = (get_parent()).direction_shot
-			var texto = (($"../LineEdit").get_text()).replace(" ","")
-			var query_string = generete_query_string(texto,x)
-			var headers = PoolStringArray()
-			headers.append("Content-Type: application/json")
-			$HTTPA.request(query_string, headers, true, 0)
+			if !focus_activate:
+				var x = (get_parent()).direction_shot
+				var texto = (($"../LineEdit").get_text()).replace(" ","")
+				var query_string = generete_query_string(texto,x)
+				expression = texto
+				var headers = PoolStringArray()
+				headers.append("Content-Type: application/json")
+				$HTTPA.request(query_string, headers, true, 0)
 	
 
 			
@@ -109,11 +113,13 @@ func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
 					var y = ((0-(float(aux[1])))/100) * 640
 					var v = Vector2(x,y)
 					vector_array.append(v)
-			print(vector_array)
+			#print(vector_array)
 			
+			var booleano = (get_parent()).set_label(expression)
 			if (get_parent()).direction_shot == -1:
 				vector_array.invert()
 			get_parent().shot_runing = 1
+		
 			var shotInstance = SHOT.instance()
 			shotInstance.new_curve(vector_array)
 			shotInstance.z_index = -1
@@ -135,3 +141,12 @@ func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
 			
 	else:
 		print("An error occurred in the HTTP request.")
+		($"../LineEdit").set_text("Função Invalida")
+
+
+func _on_LineEdit_focus_entered():
+	focus_activate = true
+
+
+func _on_LineEdit_focus_exited():
+	focus_activate = false

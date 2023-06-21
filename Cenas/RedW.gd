@@ -109,8 +109,8 @@ func _on_HTTPR_request_completed(result, response_code, headers, body):
 			for coords in points:
 				var aux = coords.split("/")
 				if len(aux) ==2:
-					var x = (float(aux[0])/100) * 640
-					var y = ((0-(float(aux[1])))/100) * 640
+					var x = (float(aux[0])/10) * 640
+					var y = ((0-(float(aux[1])))/10) * 640
 					var v = Vector2(x,y)
 					vector_array.append(v)
 			#print(vector_array)

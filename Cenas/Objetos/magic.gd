@@ -1,8 +1,7 @@
 extends Path2D
 
 
-var speed = 400
-
+var speed = 300
 
 func new_curve(points : PoolVector2Array):
 	var newCurve = Curve2D.new()
@@ -24,7 +23,7 @@ func _ready():
 	
 	var animation = $PathFollow2D/AnimationPlayer.get_animation("shot")
 	var animationTime = curve.get_baked_length() / speed
-	animation.length = animationTime 
+	animation.length = animationTime
 	var track_index = animation.find_track(NodePath(".:unit_offset"))
 	var keyId = animation.bezier_track_insert_key(track_index, animationTime, 1)#animation.track_insert_key(track_index, animationTime, 1.0)
 

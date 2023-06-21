@@ -5,6 +5,7 @@ const SPEED := 500
 var velocity := Vector2.ZERO
 var direction := Vector2(1,0)
 var colision = CollisionShape2D
+var marc = preload("res://Cenas/Objetos/marc.tscn")
 
 func _ready():
 	pass 
@@ -35,5 +36,7 @@ func _on_SpellShot_body_entered(body : Node):
 		get_parent().get_parent().get_parent().shot_runing = 0
 
 #func _on_VisibilityNotifier2D_screen_exited():
-#	queue_free()
-
+#	Global.emit_hit()
+#	get_parent().get_parent().get_parent().set_player_turn()
+#	get_parent().get_parent().queue_free()
+#	get_parent().get_parent().get_parent().shot_runing = 0

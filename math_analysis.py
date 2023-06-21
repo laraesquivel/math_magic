@@ -53,6 +53,8 @@ class Math_Analys:
         x = sympy.symbols(self.variavel_em_funcao)
         expression = sympy.parse_expr(self.expressao)
         x_values = list(range(self.dominio[0], self.dominio[1]+ 1, 1))
+        new_x_values = [float(x)/10 for x in x_values]
+        x_values = new_x_values
         y_values = [expression.subs(x, float(x_val)) for x_val in x_values]
         if self.dominio[0] == 0:
             y_values = [(new_y - y_values[0]) for new_y in y_values]
@@ -64,7 +66,8 @@ class Math_Analys:
         for x_val, y_val in zip(x_values, y_values):
            # print(f'x = {x_val}, y = {y_val}')
             #points.append({'x_val':x_val,'y_val':y_val})
-            points = f'{points}{x_val}/{y_val},'
+            if (y_val < 720 and y_val > -720):
+                points = f'{points}{x_val}/{y_val},'
         return points
     
 

@@ -82,10 +82,8 @@ func set_label(texto):
 
 func _ready():
 	
-	$HTTPRequest.connect("request_completed", self, "_on_HTTPRequest_request_completed")
-	line_edit = get_node("LineEdit")
-	line_edit.connect("text_entired",self,"_on_LineEdit_text_entered")
-	
+	#line_edit = get_node("LineEdit")
+	#line_edit.connect("text_entired",self,"_on_LineEdit_text_entered")
 	
 	
 	var headers = PoolStringArray()
@@ -165,22 +163,10 @@ func generete_query_string(math_expression,valor):
 	print(BASE_STR)
 	return BASE_STR
 	
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-		if response_code == 200:
-			var response = body.get_string_from_utf8()
-			print(response)
-			print(headers)
-			
-		else:
-			print("An error occurred in the HTTP request.")
 
 
-func _on_LineEdit_text_entered(new_text):
-	var texto = (get_node("LineEdit")).get_text()
-	var query_string = generete_query_string(texto,1)
-	var headers = PoolStringArray()
-	headers.append("Content-Type: application/json")
-	#$HTTPRequest.request(query_string, headers, true, 0)
+
+
 
 
 #  Verifica quantos e quais magos iram jogar e att o turnSequence com uma ordem
@@ -261,5 +247,4 @@ func _on_Timer_timeout():
 	get_tree().change_scene("res://Menu.tscn")
 
 
-func _on_HTTPP_request_completed(result, response_code, headers, body):
-	pass # Replace with function body.
+

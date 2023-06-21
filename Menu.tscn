@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/Menu/backGraundMenu.png" type="Texture" id=1]
 [ext_resource path="res://assets/Menu/buttonContinuarDesativ.png" type="Texture" id=2]
@@ -13,6 +13,24 @@
 [ext_resource path="res://scripts/menu/ComoJogar.gd" type="Script" id=11]
 [ext_resource path="res://scripts/menu/Menu.gd" type="Script" id=12]
 [ext_resource path="res://Configura.gd" type="Script" id=13]
+[ext_resource path="res://TextFont.tres" type="Theme" id=14]
+[ext_resource path="res://assets/Menu/Adição.png" type="Texture" id=15]
+[ext_resource path="res://assets/Menu/Subtração.png" type="Texture" id=16]
+[ext_resource path="res://assets/Menu/Divisão.png" type="Texture" id=17]
+[ext_resource path="res://assets/Menu/Euler.png" type="Texture" id=18]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+spread = 180.0
+flatness = 0.64
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 358.97
+initial_velocity_random = 0.47
+angular_velocity = -36.92
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 0.03
+scale = 0.3
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -29,52 +47,109 @@ position = Vector2( 366, 372 )
 scale = Vector2( 0.219195, 0.218279 )
 texture = ExtResource( 8 )
 
+[node name="Adicao" type="Particles2D" parent="."]
+position = Vector2( 363, 373 )
+scale = Vector2( 1, 1 )
+amount = 2
+randomness = 0.05
+process_material = SubResource( 1 )
+texture = ExtResource( 15 )
+
+[node name="sub" type="Particles2D" parent="."]
+position = Vector2( 363, 373 )
+scale = Vector2( 1, 1 )
+amount = 2
+randomness = 0.05
+process_material = SubResource( 1 )
+texture = ExtResource( 16 )
+
+[node name="Divisao" type="Particles2D" parent="."]
+position = Vector2( 363, 373 )
+scale = Vector2( 1, 1 )
+amount = 2
+randomness = 0.05
+process_material = SubResource( 1 )
+texture = ExtResource( 17 )
+
+[node name="euler" type="Particles2D" parent="."]
+position = Vector2( 363, 373 )
+scale = Vector2( 1, 1 )
+amount = 2
+randomness = 0.05
+process_material = SubResource( 1 )
+texture = ExtResource( 18 )
+
+[node name="pi" type="Particles2D" parent="."]
+position = Vector2( 363, 373 )
+scale = Vector2( 1, 1 )
+amount = 2
+randomness = 0.05
+process_material = SubResource( 1 )
+texture = ExtResource( 17 )
+
 [node name="ErickMath" type="Sprite" parent="."]
 position = Vector2( 356, 360 )
 scale = Vector2( 0.182866, 0.182103 )
 texture = ExtResource( 6 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 734.0
+margin_left = 666.0
 margin_top = 92.0
 margin_right = 1235.0
 margin_bottom = 630.0
 alignment = 1
 
 [node name="NovoJogo" type="Button" parent="VBoxContainer"]
-margin_right = 501.0
-margin_bottom = 104.0
+margin_top = 15.0
+margin_right = 569.0
+margin_bottom = 113.0
+theme = ExtResource( 14 )
 icon = ExtResource( 5 )
+icon_align = 2
 script = ExtResource( 9 )
 
 [node name="Continuar" type="Button" parent="VBoxContainer"]
-margin_top = 108.0
-margin_right = 501.0
-margin_bottom = 212.0
+margin_top = 117.0
+margin_right = 569.0
+margin_bottom = 215.0
+theme = ExtResource( 14 )
 icon = ExtResource( 2 )
+icon_align = 2
 
 [node name="Configura" type="Button" parent="VBoxContainer"]
-margin_top = 216.0
-margin_right = 501.0
-margin_bottom = 320.0
+margin_top = 219.0
+margin_right = 569.0
+margin_bottom = 317.0
+theme = ExtResource( 14 )
 icon = ExtResource( 3 )
+icon_align = 2
 script = ExtResource( 13 )
 
 [node name="ComoJogar" type="Button" parent="VBoxContainer"]
-margin_top = 324.0
-margin_right = 501.0
-margin_bottom = 429.0
+margin_top = 321.0
+margin_right = 569.0
+margin_bottom = 420.0
+theme = ExtResource( 14 )
 icon = ExtResource( 4 )
+icon_align = 2
 script = ExtResource( 11 )
 
 [node name="Sair" type="Button" parent="VBoxContainer"]
-margin_top = 433.0
-margin_right = 501.0
-margin_bottom = 538.0
+margin_top = 424.0
+margin_right = 569.0
+margin_bottom = 523.0
+theme = ExtResource( 14 )
 icon = ExtResource( 7 )
+icon_align = 2
 script = ExtResource( 10 )
 
+[connection signal="mouse_entered" from="VBoxContainer/NovoJogo" to="VBoxContainer/NovoJogo" method="_on_NovoJogo_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/NovoJogo" to="VBoxContainer/NovoJogo" method="_on_NovoJogo_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/NovoJogo" to="VBoxContainer/NovoJogo" method="_on_NovoJogo_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Configura" to="VBoxContainer/Configura" method="_on_Configura_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Configura" to="VBoxContainer/Configura" method="_on_Configura_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Configura" to="VBoxContainer/Configura" method="_on_Configura_pressed"]
 [connection signal="pressed" from="VBoxContainer/ComoJogar" to="VBoxContainer/ComoJogar" method="_on_ComoJogar_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Sair" to="VBoxContainer/Sair" method="_on_Sair_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Sair" to="VBoxContainer/Sair" method="_on_Sair_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Sair" to="VBoxContainer/Sair" method="_on_Sair_pressed"]

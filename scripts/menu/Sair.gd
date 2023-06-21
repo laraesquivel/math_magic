@@ -18,3 +18,11 @@ func _ready():
 
 func _on_Sair_pressed():
 	get_tree().quit()
+
+
+func _on_Sair_mouse_entered():
+	icon_align = Button.ALIGN_LEFT
+
+
+func _on_Sair_mouse_exited():
+	icon_align = Button.ALIGN_RIGHT

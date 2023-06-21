@@ -16,3 +16,11 @@ func _ready():
 
 func _on_Configura_pressed():
 	get_tree().change_scene("res://Cenas/menus/config.tscn")
+
+
+func _on_Configura_mouse_entered():
+	icon_align = Button.ALIGN_LEFT
+
+
+func _on_Configura_mouse_exited():
+	icon_align = Button.ALIGN_RIGHT

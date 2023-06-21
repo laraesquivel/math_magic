@@ -18,3 +18,11 @@ func _ready():
 
 func _on_NovoJogo_pressed():
 	get_tree().change_scene("res://Cenas/menus/levelSelect.tscn")
+
+
+func _on_NovoJogo_mouse_entered():
+	icon_align = Button.ALIGN_LEFT
+
+
+func _on_NovoJogo_mouse_exited():
+	icon_align = Button.ALIGN_RIGHT

@@ -15,7 +15,7 @@ var newPosition = position
 var this_wizard
 
 func _ready():
-	$HTTPA.connect("request_completed", self, "_on_HTTPRequest_request_completed")
+	$HTTPG.connect("request_completed", self, "_on_HTTPRequest_request_completed")
 	print("KinematicBody lendo estado")
 	
 	var daddy = get_parent()
@@ -68,7 +68,7 @@ func get_input():
 			var query_string = generete_query_string(texto,x)
 			var headers = PoolStringArray()
 			headers.append("Content-Type: application/json")
-			$HTTPA.request(query_string, headers, true, 0)
+			$HTTPG.request(query_string, headers, true, 0)
 	
 
 			
@@ -83,7 +83,7 @@ func _physics_process(delta):
 
 func kill():
 	get_parent().kill(this_wizard)
-	$Azul.self_modulate = Color("404040")
+	$Green.self_modulate = Color("404040")
 	$CollisionShape2DAzul.queue_free()
 	z_index = -2
 	
@@ -93,14 +93,19 @@ func spawn(spawnPoint : Vector2):
 	newPosition = position
 
 
-func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
+
+
+
+
+func _on_HTTPG_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 			var response = body.get_string_from_utf8()
 			#print(response)
 			print(headers)
 			var points = str(response).split(',')
-			var vector_array = []
+			#var vector_array = []
 			
+			var vector_array = PoolVector2Array()
 			
 			for coords in points:
 				var aux = coords.split("/")
@@ -110,9 +115,11 @@ func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
 					var v = Vector2(x,y)
 					vector_array.append(v)
 			print(vector_array)
-				
+			if (get_parent()).direction_shot == -1:
+				vector_array.invert()
 			get_parent().shot_runing = 1
 			var shotInstance = SHOT.instance()
+			shotInstance.new_curve(vector_array)
 			shotInstance.z_index = -1
 			shotInstance.position = $spellPoint.global_position 
 			get_parent().add_child(shotInstance)

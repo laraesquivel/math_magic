@@ -197,3 +197,7 @@ func position_tokens():
 
 func _on_Timer_timeout():
 	get_tree().change_scene("res://Menu.tscn")
+
+
+func _on_HTTPP_request_completed(result, response_code, headers, body):
+	pass # Replace with function body.

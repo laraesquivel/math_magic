@@ -99,8 +99,8 @@ func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
 			#print(response)
 			print(headers)
 			var points = str(response).split(',')
-			var vector_array = []
-			
+			#var vector_array = []
+			var vector_array = PoolVector2Array()
 			
 			for coords in points:
 				var aux = coords.split("/")
@@ -110,9 +110,12 @@ func _on_HTTPAZUL_request_completed(result, response_code, headers, body):
 					var v = Vector2(x,y)
 					vector_array.append(v)
 			print(vector_array)
-				
+			
+			if (get_parent()).direction_shot == -1:
+				vector_array.invert()
 			get_parent().shot_runing = 1
 			var shotInstance = SHOT.instance()
+			shotInstance.new_curve(vector_array)
 			shotInstance.z_index = -1
 			shotInstance.position = $spellPoint.global_position 
 			get_parent().add_child(shotInstance)

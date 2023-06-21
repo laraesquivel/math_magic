@@ -4,7 +4,7 @@ extends Path2D
 var speed = 400
 
 
-func _init(points : PoolVector2Array):
+func new_curve(points : PoolVector2Array):
 	var newCurve = Curve2D.new()
 	for ponint in points:
 		newCurve.add_point(ponint)

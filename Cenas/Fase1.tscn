@@ -216,6 +216,8 @@ shape = SubResource( 10 )
 
 [node name="spellPoint" type="Position2D" parent="Fase1/RedW"]
 
+[node name="HTTPR" type="HTTPRequest" parent="Fase1/RedW"]
+
 [node name="GreenW" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
 position = Vector2( 300, -100 )
 collision_mask = 2
@@ -231,6 +233,8 @@ shape = SubResource( 10 )
 
 [node name="spellPoint" type="Position2D" parent="Fase1/GreenW"]
 
+[node name="HTTPG" type="HTTPRequest" parent="Fase1/GreenW"]
+
 [node name="PurpleW" type="KinematicBody2D" parent="Fase1" groups=["wizard"]]
 position = Vector2( 350, -100 )
 collision_mask = 2
@@ -245,6 +249,8 @@ position = Vector2( 0, -1 )
 shape = SubResource( 10 )
 
 [node name="spellPoint" type="Position2D" parent="Fase1/PurpleW"]
+
+[node name="HTTPP" type="HTTPRequest" parent="Fase1/PurpleW"]
 
 [node name="Sprite" type="Sprite" parent="Fase1"]
 position = Vector2( -256, 335 )
@@ -332,6 +338,9 @@ wait_time = 5.0
 one_shot = true
 
 [connection signal="request_completed" from="Fase1/AzulK/HTTPA" to="Fase1/AzulK" method="_on_HTTPAZUL_request_completed"]
+[connection signal="request_completed" from="Fase1/RedW/HTTPR" to="Fase1/RedW" method="_on_HTTPR_request_completed"]
+[connection signal="request_completed" from="Fase1/GreenW/HTTPG" to="Fase1/GreenW" method="_on_HTTPG_request_completed"]
+[connection signal="request_completed" from="Fase1/PurpleW/HTTPP" to="Fase1/PurpleW" method="_on_HTTPP_request_completed"]
 [connection signal="focus_entered" from="Fase1/LineEdit" to="Fase1/LineEdit" method="_on_LineEdit_focus_entered"]
 [connection signal="focus_exited" from="Fase1/LineEdit" to="Fase1/LineEdit" method="_on_LineEdit_focus_exited"]
 [connection signal="text_entered" from="Fase1/LineEdit" to="Fase1" method="_on_LineEdit_text_entered"]
